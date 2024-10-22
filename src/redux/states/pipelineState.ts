@@ -4,6 +4,7 @@ import { Organization, Repository, Resource } from './apiState';
 export interface PipelineState {
   pipelines: PipelineData[]
   activePipelineId: string
+  showStatusEnable: boolean
 }
 
 export interface HistoryData {

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getActiveFlowData, getActivePipeline } from "../../redux/selectors";
 import { useState } from "react";
-import { updatePipelineName } from "../../redux/slices/pipelineSlice";
+import { updatePipelineName, toggleShowStatusEnable } from "../../redux/slices/pipelineSlice";
 import EditIcon from '@mui/icons-material/Edit';
 import { Node } from "reactflow";
 import { DataSinkNodeData, DataSourceNodeData, OperatorNodeData } from "../../redux/states/pipelineState";
@@ -154,6 +154,11 @@ export default function PipelineAppBar() {
             </Box>
           )}
         </Box>
+
+        <Button onClick={() => dispatch(toggleShowStatusEnable())}>
+          <Typography variant="body1" sx={{ color: "white" }}>Show status</Typography>
+        </Button>
+
         <Button onClick={() => generateJson()}>
           <Typography variant="body1" sx={{ color: "white" }}>Deploy pipeline</Typography>
         </Button>
