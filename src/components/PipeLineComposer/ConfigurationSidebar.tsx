@@ -11,6 +11,12 @@ import DataSourceConfiguration from './ConfigurationPages/DataSourceConfiguratio
 import DataSinkConfiguration from './ConfigurationPages/DataSinkConfiguration';
 import OrganizationConfiguration from './ConfigurationPages/OrganizationConfiguration';
 import EdgeConfiguration from './ConfigurationPages/EdgeConfiguration';
+import CircularProgress from '@mui/material/CircularProgress';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty';
+import { Box } from '@mui/material';
+
+
 
 const drawerWidth = 240;
 
@@ -58,15 +64,30 @@ export default function PersistentDrawerRight({ selectableProp }: ConfigurationS
       <Divider />
       <DrawerHeader>
         <Typography sx={{ width: '100%', textAlign: 'center' }} variant="h6" noWrap component="div">
-          Configuration
+          STATUS
         </Typography>
-      </DrawerHeader>
+      </DrawerHeader> 
       <Divider />
       {node?.type === "operator" && <AlgorithmConfiguration nodeprop={selectableProp as Node<NodeData>} />}
       {node?.type === "dataSource" && <DataSourceConfiguration nodeprop={selectableProp as Node<NodeData>} />}
       {node?.type === "dataSink" && <DataSinkConfiguration nodeprop={selectableProp as Node<NodeData>} />}
       {node?.type === "organization" && <OrganizationConfiguration nodeprop={selectableProp as Node<NodeData>} />}
       {edge && <EdgeConfiguration edgeProp={selectableProp as Edge} />}
+
+
+      <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+      <CircularProgress sx={{color: 'sky blue'}}/>
+
+      <CheckCircleIcon style={{ fontSize: '50px', color: '#4caf50' }} />
+
+      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <HourglassEmptyIcon sx={{ fontSize: 50, color: 'grey' }} />
+      </Box>
+
+      
+
+    </div>
+
     </Drawer>
   );
 }

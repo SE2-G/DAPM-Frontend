@@ -64,9 +64,16 @@ const CreateRepositoryButton = ({ orgId }: CreateRepositoryButtonProps) => {
                                 <FormLabel>Repository name</FormLabel>
                                 <TextField name="Name" />
                             </FormControl>
+<<<<<<< Updated upstream
 
                             <Button type="submit" sx={{ backgroundColor: "gray", padding: "1px", color: "black" }}>Submit</Button>
                         </form>
+=======
+                            <div style={{textAlign: "center"}}>
+                                <Button type="submit" sx={{ backgroundColor: "grey", padding: "3px 7px", color: "white", display: "inline-block", verticalAlign: "middle" , marginTop: "20px", fontSize: "20px", fontWeight: "bolder"}}>Submit</Button>
+                            </div>
+                         </form>
+>>>>>>> Stashed changes
                     </Box>
                 </Box>
             </Modal>
