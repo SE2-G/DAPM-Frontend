@@ -132,6 +132,28 @@ export default function PipelineAppBar() {
 
   }
 
+  const generatePipelinedata = () => {
+    const pipelineData = {
+      nodes: flowData?.nodes || [],
+      edges: flowData?.edges || []
+    };
+  
+    const jsonString = JSON.stringify(pipelineData, null, 2);
+  
+    const blob = new Blob([jsonString], { type: 'application/json' });
+  
+    const url = URL.createObjectURL(blob);
+  
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `${pipelineName || 'pipeline'}.json`;
+    link.click();
+  
+    // Clean up the URL object
+    URL.revokeObjectURL(url);
+  };
+
+
   return (
     <AppBar position="fixed">
       <Toolbar sx={{ flexGrow: 1 }}>
@@ -159,8 +181,12 @@ export default function PipelineAppBar() {
           <Typography variant="body1" sx={{ color: "white" }}>Show status</Typography>
         </Button>
 
+        <Button onClick={() => generatePipelinedata()}>
+          <Typography variant="body1" sx={{ color: "green" }}>Export pipeline</Typography>
+        </Button>
+
         <Button onClick={() => generateJson()}>
-          <Typography variant="body1" sx={{ color: "white" }}>Deploy pipeline</Typography>
+          <Typography variant="body1" sx={{ color: "red" }}>Deploy pipeline</Typography>
         </Button>
       </Toolbar>
     </AppBar>
