@@ -33,7 +33,7 @@ export default function PipelineAppBar() {
           setShowStatusBar(false);
           setStatusMessage('');
           setProgress(0);
-        }, 5000); // Auto-hide after 5 seconds
+        }, 5000); 
         return () => clearTimeout(timer);
       }
     }
@@ -204,23 +204,37 @@ export default function PipelineAppBar() {
   };
 
   const generatePipelinedata = () => {
-    const pipelineData = {
-      nodes: flowData?.nodes || [],
-      edges: flowData?.edges || [],
-    };
+    try {
+      setProgress(0);
+      setStatusMessage('Exporting pipeline...');
+      setStatusType('info');
 
-    const jsonString = JSON.stringify(pipelineData, null, 2);
+      const pipelineData = {
+        nodes: flowData?.nodes || [],
+        edges: flowData?.edges || [],
+      };
 
-    const blob = new Blob([jsonString], { type: 'application/json' });
+      const jsonString = JSON.stringify(pipelineData, null, 2);
 
-    const url = URL.createObjectURL(blob);
+      const blob = new Blob([jsonString], { type: 'application/json' });
 
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `${pipelineName || 'pipeline'}.json`;
-    link.click();
+      const url = URL.createObjectURL(blob);
 
-    URL.revokeObjectURL(url);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `${pipelineName || 'pipeline'}.json`;
+      link.click();
+
+      URL.revokeObjectURL(url);
+
+      setProgress(100);
+      setStatusMessage('Pipeline exported successfully');
+      setStatusType('success');
+    } catch (error: any) {
+      setProgress(100);
+      setStatusMessage('Error exporting pipeline: ' + error.message);
+      setStatusType('error');
+    }
   };
 
   const getStatusIcon = () => {
@@ -229,7 +243,7 @@ export default function PipelineAppBar() {
     } else if (statusType === 'error') {
       return <ErrorIcon sx={{ mr: 1 }} />;
     } else {
-      // Use CircularProgress for 'info' statusType
+      
       return <CircularProgress size={24} sx={{ color: 'white', mr: 1 }} />;
     }
   };
@@ -265,16 +279,36 @@ export default function PipelineAppBar() {
           )}
         </Box>
 
-        <Button onClick={() => generatePipelinedata()}>
-          <Typography variant="body1" sx={{ color: 'green' }}>
-            Export pipeline
-          </Typography>
+        <Button
+          onClick={() => generatePipelinedata()}
+          variant="contained"
+          sx={{
+            ml: 1,
+            mr: 1,
+            backgroundColor: '#555555', 
+            color: 'white',
+            fontWeight: 'bold',
+            '&:hover': {
+              backgroundColor: '#404040', 
+            },
+          }}
+        >
+          Export pipeline
         </Button>
 
-        <Button onClick={() => generateJson()}>
-          <Typography variant="body1" sx={{ color: 'red' }}>
-            Deploy pipeline
-          </Typography>
+        <Button
+          onClick={() => generateJson()}
+          variant="contained"
+          sx={{
+            backgroundColor: '#555555', 
+            color: 'white',
+            fontWeight: 'bold',
+            '&:hover': {
+              backgroundColor: '#404040', 
+            },
+          }}
+        >
+          Deploy pipeline
         </Button>
       </Toolbar>
 
@@ -286,7 +320,7 @@ export default function PipelineAppBar() {
             width: '100%',
             height: '60px',
             backgroundColor:
-              statusType === 'error' ? '#f44336' : statusType === 'success' ? '#4caf50' : '#2196f3',
+              statusType === 'error' ? '#f44336' : statusType === 'success' ? '#4caf50' : '#555555', 
             color: 'white',
             overflow: 'hidden',
             zIndex: 1300,
@@ -317,7 +351,7 @@ export default function PipelineAppBar() {
             }}
           >
             {getStatusIcon()}
-            <Typography>{statusMessage}</Typography>
+            <Typography sx={{ fontWeight: 'bold' }}>{statusMessage}</Typography>
           </Box>
 
           <IconButton
