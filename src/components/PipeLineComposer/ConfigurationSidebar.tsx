@@ -43,8 +43,8 @@ export default function PersistentDrawerRight({ selectableProp }: ConfigurationS
   const node = useSelector(getNodes)?.find(node => node.id === selectableProp?.id);
   const edge = useSelector(getEdges)?.find(edge => edge.id === selectableProp?.id);
 
-  const showStatusEnable = useSelector(getShowStatusEnable);
-  const nodeStatus = useSelector(getNodeStatus);
+  //const showStatusEnable = useSelector(getShowStatusEnable);
+  //const nodeStatus = useSelector(getNodeStatus);
 
 
   const edgeEndNode = useSelector(getNodes)?.find(node => node.data.templateData.targetHandles.find(handle => handle.id === edge?.targetHandle));
@@ -83,32 +83,7 @@ export default function PersistentDrawerRight({ selectableProp }: ConfigurationS
       {node?.type === "organization" && <OrganizationConfiguration nodeprop={selectableProp as Node<NodeData>} />}
       {edge && <EdgeConfiguration edgeProp={selectableProp as Edge} />}
 
-
-      {/*<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-        {nodeStatus === 0 ? (
-          <HourglassEmptyIcon sx={{ fontSize: 50, color: 'grey' }} /> // 未开始
-        ) : nodeStatus === 1 ? (
-          <CircularProgress sx={{ color: 'skyblue' }} /> // 运行中
-        ) : nodeStatus === 2 ? (
-          <CheckCircleIcon sx={{ fontSize: 50, color: 'green' }} /> // 已完成
-        ) : (
-          <Typography sx={{ color: 'red' }}>Unknown Status</Typography> // 未知状态
-        )}
-      </div>*/}
-
-    {showStatusEnable && (
-      <Box display="flex" justifyContent="center" alignItems="center" height="100%">
-        {nodeStatus === 0 ? (
-          <HourglassEmptyIcon fontSize="large" color="disabled" />
-        ) : nodeStatus === 1 ? (
-          <CircularProgress color="primary" />
-        ) : nodeStatus === 2 ? (
-          <CheckCircleIcon fontSize="large" color="success" />
-        ) : (
-          <Typography color="error">Unknown Status</Typography>
-        )}
-      </Box>
-    )}
+    
 
       
 

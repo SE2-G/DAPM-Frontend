@@ -15,6 +15,7 @@ import { putCommandStart, putExecution, putPipeline } from "../../services/backe
 import { getOrganizations, getRepositories } from "../../redux/selectors/apiSelector";
 import { getHandleId, getNodeId } from "./Flow";
 
+
 export default function PipelineAppBar() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ export default function PipelineAppBar() {
   const [statusType, setStatusType] = useState<'success' | 'error' | 'info'>('info');
   const [progress, setProgress] = useState(0);
   const [showStatusBar, setShowStatusBar] = useState(false);
+  const [isDeploying, setIsDeploying] = useState(false);
 
   useEffect(() => {
     if (statusMessage) {
@@ -60,6 +62,7 @@ export default function PipelineAppBar() {
 
   const generateJson = async () => {
     try {
+      setIsDeploying(true);
       setProgress(0);
       setStatusMessage('Starting to deploy pipeline...');
       setStatusType('info');
@@ -200,6 +203,8 @@ export default function PipelineAppBar() {
       setProgress(100);
       setStatusMessage('Error: ' + error.message);
       setStatusType('error');
+    } finally {
+      setIsDeploying(false);
     }
   };
 
