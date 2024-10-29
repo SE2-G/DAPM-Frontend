@@ -1,10 +1,13 @@
-import { AppBar, Box, Button, TextField, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box, Button, TextField, Toolbar, Typography, IconButton, CircularProgress } from "@mui/material";
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import CloseIcon from '@mui/icons-material/Close';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import ErrorIcon from '@mui/icons-material/Error';
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getActiveFlowData, getActivePipeline } from "../../redux/selectors";
-import { useState } from "react";
-import { updatePipelineName, toggleShowStatusEnable } from "../../redux/slices/pipelineSlice";
+import { useState, useEffect } from "react";
+import { updatePipelineName } from "../../redux/slices/pipelineSlice";
 import EditIcon from '@mui/icons-material/Edit';
 import { Node } from "reactflow";
 import { DataSinkNodeData, DataSourceNodeData, OperatorNodeData } from "../../redux/states/pipelineState";
@@ -19,6 +22,22 @@ export default function PipelineAppBar() {
   const [isEditing, setIsEditing] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
   const [statusType, setStatusType] = useState<'success' | 'error' | 'info'>('info');
+  const [progress, setProgress] = useState(0);
+  const [showStatusBar, setShowStatusBar] = useState(false);
+
+  useEffect(() => {
+    if (statusMessage) {
+      setShowStatusBar(true);
+      if (statusType === 'success' || statusType === 'error') {
+        const timer = setTimeout(() => {
+          setShowStatusBar(false);
+          setStatusMessage('');
+          setProgress(0);
+        }, 5000); // Auto-hide after 5 seconds
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [statusMessage, statusType]);
 
   const handleStartEditing = () => {
     setIsEditing(true);
@@ -41,6 +60,7 @@ export default function PipelineAppBar() {
 
   const generateJson = async () => {
     try {
+      setProgress(0);
       setStatusMessage('Starting to deploy pipeline...');
       setStatusType('info');
 
@@ -55,7 +75,7 @@ export default function PipelineAppBar() {
           if (edge.data?.filename) {
             const newTarget = getHandleId();
             const edgeToModify = edges.find(
-              (e) => e.sourceHandle == edge.sourceHandle && e.targetHandle == edge.targetHandle
+              (e) => e.sourceHandle === edge.sourceHandle && e.targetHandle === edge.targetHandle
             );
             edgeToModify!.targetHandle = newTarget;
 
@@ -155,24 +175,29 @@ export default function PipelineAppBar() {
       console.log(`Selected organization ID: ${selectedOrg.id}`);
       console.log(`Selected repository ID: ${selectedRepo.id}`);
 
+      setProgress(25);
       setStatusMessage('Uploading pipeline...');
       setStatusType('info');
       const pipelineId = await putPipeline(selectedOrg.id, selectedRepo.id, requestData);
 
+      setProgress(50);
       setStatusMessage('Creating execution instance...');
       setStatusType('info');
 
       const executionId = await putExecution(selectedOrg.id, selectedRepo.id, pipelineId);
 
-
+      setProgress(75);
       setStatusMessage('Executing pipeline...');
       setStatusType('info');
 
       await putCommandStart(selectedOrg.id, selectedRepo.id, pipelineId, executionId);
+
+      setProgress(100);
       setStatusMessage('Pipeline deployed successfully');
       setStatusType('success');
 
     } catch (error: any) {
+      setProgress(100);
       setStatusMessage('Error: ' + error.message);
       setStatusType('error');
     }
@@ -196,6 +221,17 @@ export default function PipelineAppBar() {
     link.click();
 
     URL.revokeObjectURL(url);
+  };
+
+  const getStatusIcon = () => {
+    if (statusType === 'success') {
+      return <CheckCircleIcon sx={{ mr: 1 }} />;
+    } else if (statusType === 'error') {
+      return <ErrorIcon sx={{ mr: 1 }} />;
+    } else {
+      // Use CircularProgress for 'info' statusType
+      return <CircularProgress size={24} sx={{ color: 'white', mr: 1 }} />;
+    }
   };
 
   return (
@@ -242,24 +278,62 @@ export default function PipelineAppBar() {
         </Button>
       </Toolbar>
 
-      {statusMessage && (
+      {showStatusBar && (
         <Box
           sx={{
-            p: 2,
-            backgroundColor:
-              statusType === 'error'
-                ? 'red'
-                : statusType === 'success'
-                ? 'green'
-                : 'gray',
-            color: 'white',
             position: 'fixed',
             bottom: 0,
             width: '100%',
-            textAlign: 'center',
+            height: '60px',
+            backgroundColor:
+              statusType === 'error' ? '#f44336' : statusType === 'success' ? '#4caf50' : '#2196f3',
+            color: 'white',
+            overflow: 'hidden',
+            zIndex: 1300,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            opacity: showStatusBar ? 1 : 0,
+            transition: 'opacity 0.5s ease-in-out',
           }}
         >
-          <Typography>{statusMessage}</Typography>
+          <Box
+            sx={{
+              position: 'absolute',
+              bottom: 0,
+              left: 0,
+              height: '5px',
+              backgroundColor: 'rgba(255, 255, 255, 0.7)',
+              width: `${progress}%`,
+              transition: 'width 0.3s ease-in-out',
+            }}
+          />
+
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              zIndex: 1,
+            }}
+          >
+            {getStatusIcon()}
+            <Typography>{statusMessage}</Typography>
+          </Box>
+
+          <IconButton
+            onClick={() => {
+              setShowStatusBar(false);
+              setStatusMessage('');
+              setProgress(0);
+            }}
+            sx={{
+              position: 'absolute',
+              right: '10px',
+              color: 'white',
+            }}
+          >
+            <CloseIcon />
+          </IconButton>
         </Box>
       )}
     </AppBar>
