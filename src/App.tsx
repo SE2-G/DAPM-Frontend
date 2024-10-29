@@ -11,6 +11,7 @@ import { RouterProvider, createBrowserRouter, createHashRouter } from "react-rou
 import PipelineComposer from "./routes/PipeLineComposer";
 import UserPage from "./routes/OverviewPage";
 import LoginPage from "./routes/LoginPage";
+import {AdminEditRoute, AdminListRoute} from "./routes/AdminPageRoute";
 import { loadState, saveState } from "./redux/browser-storage";
 
 // Configure redux-persist
@@ -54,6 +55,14 @@ const router = createBrowserRouter([
   {
     path: "/pipeline",
     element: <PipelineComposer/>,
+  },
+  {
+    path: "/admineditpage",
+    element: <AdminEditRoute/>,
+  },
+  {
+    path: "/adminlistpage",
+    element: <AdminListRoute/>,
   },
   {
     path: "/userpage",

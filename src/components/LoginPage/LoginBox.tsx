@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { TextField, Typography, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { userInfo } from '../../redux/slices/userSlice';
 
 export default function PersistentDrawerbox() {
     const [username, setUsername] = useState<string>('');
@@ -55,6 +56,11 @@ export default function PersistentDrawerbox() {
             if (response.ok) {
                 const data = await response.json();
                 localStorage.setItem('token', data.token);
+                console.log(data)
+                userInfo.roles = data.roles;
+                userInfo.userName = data.userName;
+                userInfo.fullName = data.fullName;
+
                 navigate('/userpage'); 
             } else {
                 const errorMessage = await response.text();

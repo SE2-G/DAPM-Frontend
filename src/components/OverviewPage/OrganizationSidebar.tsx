@@ -13,6 +13,7 @@ import { organizationThunk, repositoryThunk, resourceThunk } from '../../redux/s
 import { Organization, Repository, Resource } from '../../redux/states/apiState';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { Box } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import ResourceUploadButton from './Buttons/ResourceUploadButton';
 import { downloadResource, fetchOrganisation, fetchOrganisationRepositories, fetchOrganisations, fetchPipeline, fetchRepositoryPipelines, fetchRepositoryResources, fetchResource, putPipeline, putRepository } from '../../services/backendAPI';
 import CreateRepositoryButton from './Buttons/CreateRepositoryButton';
@@ -20,6 +21,8 @@ import AddOrganizationButton from './Buttons/AddOrganizationButton';
 import { display } from 'html2canvas/dist/types/css/property-descriptors/display';
 import OperatorUploadButton from './Buttons/OperatorUploadButton';
 import { Padding } from '@mui/icons-material';
+
+import { userInfo } from '../../redux/slices/userSlice';
 
 const drawerWidth = 240;
 
@@ -34,6 +37,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 export default function PersistentDrawerLeft() {
 
+  const navigate = useNavigate();
   const dispatch = useAppDispatch()
   const organizations: Organization[] = useAppSelector(getOrganizations)
   const repositories: Repository[] = useAppSelector(getRepositories)
@@ -76,6 +80,7 @@ export default function PersistentDrawerLeft() {
       variant="permanent"
       anchor="left"
     >
+
       <Divider />
       <DrawerHeader>
         <Typography sx={{ width: '100%', textAlign: 'center' }} variant="h6" noWrap component="div">
@@ -83,6 +88,23 @@ export default function PersistentDrawerLeft() {
         </Typography>
         <AddOrganizationButton />
       </DrawerHeader>
+
+      {userInfo.roles.includes("Admin") && (
+        <Box sx={{ height: '60px', display: 'flex', alignItems: 'center', margin: '7px' }}>
+        <ListItemButton 
+          onClick={() => navigate('/admineditpage')} 
+          sx={{ 
+            backgroundColor: '#444', 
+            color: 'white', 
+            textAlign: 'center', 
+            width: '100%' // Ensure it fills the Box container width
+          }}
+        >
+          <ListItemText primary="Admin Page" />
+        </ListItemButton>
+        </Box>
+      )}
+
       <List>
         {organizations.map((organization) => (
           <>
