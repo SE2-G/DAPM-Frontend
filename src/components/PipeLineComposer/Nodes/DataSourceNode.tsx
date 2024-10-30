@@ -6,16 +6,31 @@ import { NodeData } from "../../../redux/states/pipelineState";
 import CircularProgress from '@mui/material/CircularProgress';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty';
+import { RootState } from "../../../redux/states";
+import { useSelector } from 'react-redux';
+import ErrorIcon from '@mui/icons-material/Error';
 
 
 const DataSourceNode = ({ data, selected }: NodeProps<NodeData>) => {
+    const isDeploying = useSelector((state:RootState) => state.pipelineState.isDeploying);
+    const statusType = useSelector((state: RootState) => state.pipelineState.statusType);
+
+    const getStatusIcon = () => {
+        if (isDeploying && statusType === 'info') {
+          return <CircularProgress size={24} sx={{ color: 'orange' }} />;
+        } else if (statusType === 'error') {
+          return <ErrorIcon color="error" />;
+        } else if (statusType === 'success') {
+          return <CheckCircleIcon color="success" />;
+        } else {
+          return <HourglassEmptyIcon color="disabled" />; // Default or idle icon
+        }
+      };
 
     return (
        <div>
         <div style={{display: "flex",justifyContent: "center", alignItems: "center", height: "100%",marginBottom:"5px"}}>
-            <HourglassEmptyIcon fontSize="large" color="disabled" />
-            {/*<CircularProgress color="primary" />
-            <CheckCircleIcon fontSize="large" color="success" />*/}
+            {getStatusIcon()}
         </div>
          
         <Box sx={{ backgroundColor: '#556677', padding: '10px', color: 'white', position: "relative", border: selected ? '2px solid #007bff' : '2px solid #556677' }}>

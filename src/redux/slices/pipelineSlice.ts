@@ -7,7 +7,10 @@ export const initialState: PipelineState = {
   pipelines: [],
   activePipelineId: "",
   showStatusEnable: false,
-  nodeStatus: 0,
+  //nodeStatus: 0,
+  isDeploying: false,
+  //progress: 0,
+  statusType: 'info',
 }
 
 const takeSnapshot = (state: PipelineState) => {
@@ -32,6 +35,7 @@ const pipelineSlice = createSlice({
       if (!pipeline) return
       pipeline.imgData = payload.imgData
     },
+    
 
     // actions for undo and redo
 
@@ -191,11 +195,20 @@ const pipelineSlice = createSlice({
     toggleShowStatusEnable: (state) => {
       state.showStatusEnable = !state.showStatusEnable;
     },
-    setNodeStatus: (state, action) => {
-      state.nodeStatus = action.payload;
-    }
-    
-  },
+    //setNodeStatus: (state, action) => {
+    //  state.nodeStatus = action.payload;
+    //},
+    setIsDeploying(state, action:PayloadAction<boolean>) {
+      state.isDeploying = action.payload;
+    },
+  //  setProgress(state, action: PayloadAction<number>) {
+  //  state.progress = action.payload;
+  //},
+    setStatusType: (state, action:PayloadAction<string>) => {
+    state.statusType = action.payload;
+    },
+  
+  }
 })
 
 export const { 
@@ -225,7 +238,10 @@ export const {
   setNodes, 
   setEdges,
   toggleShowStatusEnable,
-  setNodeStatus
+  //setNodeStatus,
+  setIsDeploying,
+  //setProgress,
+  setStatusType,
 } = pipelineSlice.actions
 
 export default pipelineSlice.reducer 

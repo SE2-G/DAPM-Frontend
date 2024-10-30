@@ -5,7 +5,10 @@ export interface PipelineState {
   pipelines: PipelineData[]
   activePipelineId: string
   showStatusEnable: boolean
-  nodeStatus: number
+  //nodeStatus: number
+  isDeploying: boolean
+  //progress: number
+  statusType: string
 }
 
 export interface HistoryData {

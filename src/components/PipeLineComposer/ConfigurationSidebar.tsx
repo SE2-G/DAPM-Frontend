@@ -15,9 +15,9 @@ import CircularProgress from '@mui/material/CircularProgress';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty';
 import { Box } from '@mui/material';
-import { setNodeStatus } from '../../redux/slices/pipelineSlice';
+//import { setNodeStatus } from '../../redux/slices/pipelineSlice';
 import { useEffect } from 'react';
-import { getShowStatusEnable, getNodeStatus } from '../../redux/selectors/apiSelector';
+//import { getShowStatusEnable, getNodeStatus } from '../../redux/selectors/apiSelector';
 
 
 
@@ -85,7 +85,6 @@ export default function PersistentDrawerRight({ selectableProp }: ConfigurationS
 
     
 
-      
 
     </Drawer>
   );

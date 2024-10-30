@@ -32,6 +32,7 @@ import { getShowStatusEnable } from "../../redux/selectors/apiSelector";
 import { DefaultEdge } from "./Edges/DefaultEdge";
 import { v4 as uuidv4 } from "uuid";
 
+
 const nodeTypes = {
   operator: CustomNode,
   dataSource: DataSourceNode,
@@ -63,7 +64,7 @@ const BasicFlow = () => {
 
   const [lastSelected, setLastSelected] = useState<Node | Edge | undefined>();
   const [selectedDeletables, setSelectedDeletables] = useState<Array<Node<NodeData> | Edge | undefined>>([]);
-
+    
   const connectionLineStyle = { stroke: 'white', strokeOpacity: 1, strokeWidth: "1px" }
 
   useOnSelectionChange({
@@ -354,6 +355,7 @@ const BasicFlow = () => {
       <Background variant={BackgroundVariant.Dots} color="#d9d9d9" />
       {showStatusEnable && <ConfigurationSidebar selectableProp={undefined} />}
       {lastSelected && <ConfigurationSidebar selectableProp={lastSelected} />}
+      
     </ReactFlowStyled>
   );
 };

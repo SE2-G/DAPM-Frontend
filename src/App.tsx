@@ -12,6 +12,8 @@ import PipelineComposer from "./routes/PipeLineComposer";
 import UserPage from "./routes/OverviewPage";
 import LoginPage from "./routes/LoginPage";
 import { loadState, saveState } from "./redux/browser-storage";
+import React, { Component } from 'react'; 
+import { render } from "@testing-library/react";
 
 // Configure redux-persist
 const persistConfig = {
@@ -43,6 +45,7 @@ store.subscribe(
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
 
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -61,12 +64,12 @@ const router = createBrowserRouter([
 
 export default function App() {
   return (
-    <ThemeProvider theme={darkTheme}>
-      <div className="App">
-        <Provider store={store}>
-          <RouterProvider router={router} />
-        </Provider>
-      </div>
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={darkTheme}>
+        <div className="App">
+            <RouterProvider router={router} />
+        </div>
+      </ThemeProvider>
+    </Provider>
   );
 }

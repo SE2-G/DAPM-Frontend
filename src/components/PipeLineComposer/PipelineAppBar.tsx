@@ -14,6 +14,9 @@ import { DataSinkNodeData, DataSourceNodeData, OperatorNodeData } from "../../re
 import { putCommandStart, putExecution, putPipeline } from "../../services/backendAPI";
 import { getOrganizations, getRepositories } from "../../redux/selectors/apiSelector";
 import { getHandleId, getNodeId } from "./Flow";
+import { setIsDeploying, setStatusType } from "../../redux/slices/pipelineSlice";
+
+import { RootState } from "../../redux/states";
 
 
 export default function PipelineAppBar() {
@@ -22,10 +25,13 @@ export default function PipelineAppBar() {
 
   const [isEditing, setIsEditing] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
-  const [statusType, setStatusType] = useState<'success' | 'error' | 'info'>('info');
+  //const [statusType, setStatusType] = useState<'success' | 'error' | 'info'>('info');
+  //const [statusType] = useState<'success' | 'error' | 'info'>('info');
+  const statusType = useSelector((state: RootState) => state.pipelineState.statusType);
   const [progress, setProgress] = useState(0);
+  //const [progress] = useState(0);
   const [showStatusBar, setShowStatusBar] = useState(false);
-  const [isDeploying, setIsDeploying] = useState(false);
+  
 
   useEffect(() => {
     if (statusMessage) {
@@ -62,10 +68,10 @@ export default function PipelineAppBar() {
 
   const generateJson = async () => {
     try {
-      setIsDeploying(true);
+      dispatch(setIsDeploying(true));
       setProgress(0);
       setStatusMessage('Starting to deploy pipeline...');
-      setStatusType('info');
+      dispatch(setStatusType('info'));
 
       var edges = flowData!.edges.map(edge => {
         return { sourceHandle: edge.sourceHandle, targetHandle: edge.targetHandle };
@@ -180,31 +186,31 @@ export default function PipelineAppBar() {
 
       setProgress(25);
       setStatusMessage('Uploading pipeline...');
-      setStatusType('info');
+      dispatch(setStatusType('info'));
       const pipelineId = await putPipeline(selectedOrg.id, selectedRepo.id, requestData);
 
       setProgress(50);
       setStatusMessage('Creating execution instance...');
-      setStatusType('info');
+      dispatch(setStatusType('info'));
 
       const executionId = await putExecution(selectedOrg.id, selectedRepo.id, pipelineId);
 
       setProgress(75);
       setStatusMessage('Executing pipeline...');
-      setStatusType('info');
+      dispatch(setStatusType('info'));
 
       await putCommandStart(selectedOrg.id, selectedRepo.id, pipelineId, executionId);
 
       setProgress(100);
       setStatusMessage('Pipeline deployed successfully');
-      setStatusType('success');
+      dispatch(setStatusType('success'));
 
     } catch (error: any) {
       setProgress(100);
       setStatusMessage('Error: ' + error.message);
-      setStatusType('error');
+      dispatch(setStatusType('error'));
     } finally {
-      setIsDeploying(false);
+      dispatch(setIsDeploying(false));
     }
   };
 
