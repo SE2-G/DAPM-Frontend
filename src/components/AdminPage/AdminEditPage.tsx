@@ -1,12 +1,16 @@
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useEffect, useState } from 'react';
 import { List, ListItem, ListItemButton, ListItemText, Typography, TextField, Box, Button } from '@mui/material';
 import { adminInfo} from '../../redux/slices/userSlice';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 interface DrawerInterface{
     refreshKey: number
 }
 
 export default function PersistentDrawerbox({refreshKey} : DrawerInterface) {
+    const navigate = useNavigate()
+    
     // Initial roles list
     const [roles, setRoles] = useState(["Standard"]);
     const [roleInput, setRoleInput] = useState("");
@@ -71,7 +75,6 @@ export default function PersistentDrawerbox({refreshKey} : DrawerInterface) {
                 transform: 'translateY(15%)'
             }}
         >
-            {/* Registration Box */}
             <Box 
                 sx={{
                     width: 300,
@@ -82,6 +85,19 @@ export default function PersistentDrawerbox({refreshKey} : DrawerInterface) {
                     boxShadow: 3,            
                 }}
             >
+
+                <Button 
+                    sx={{ 
+                        position: 'absolute', // Position the button absolutely
+                        top: 59,              // Adjust as needed
+                        left: 10,             // Adjust as needed
+                        color: 'white',       // Icon color
+                    }} 
+                    onClick={() => {navigate('/adminlistpage')}}
+                >
+                    <ArrowBackIcon />
+                </Button>
+                
                 <Typography variant="h5" sx={{ mb: 2, textAlign: 'center', color: 'white' }}>
                     {boxTitle}
                 </Typography>
@@ -117,8 +133,8 @@ export default function PersistentDrawerbox({refreshKey} : DrawerInterface) {
                         label="Roles" 
                         variant="outlined" 
                         fullWidth 
-                        value={roleInput}          // Bind the input value
-                        onChange={(e) => setRoleInput(e.target.value)} // Update the input state
+                        value={roleInput}
+                        onChange={(e) => setRoleInput(e.target.value)}
                         sx={{ mr: 1 }}
                     />
                     <Button 
@@ -128,7 +144,7 @@ export default function PersistentDrawerbox({refreshKey} : DrawerInterface) {
                             {
                                 handleAddRole()
                             }
-                        }   // Use the handler to add the role
+                        } 
                     >
                         Add
                     </Button>
@@ -144,7 +160,6 @@ export default function PersistentDrawerbox({refreshKey} : DrawerInterface) {
                 </Button>
             </Box>
 
-            {/* Roles Sidebar */}
             <Box
                 sx={{
                     width: 200,

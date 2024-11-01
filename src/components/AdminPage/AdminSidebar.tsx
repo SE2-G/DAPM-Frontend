@@ -24,6 +24,36 @@ interface DrawerInterface {
     setRefreshKey: React.Dispatch<React.SetStateAction<number>>
 }
 
+const handleUserList = async () => {
+    
+    console.log(userInfo.token)
+
+    try {
+        const response = await fetch('http://localhost:5002/api/UserManagement/GetUsers', {
+            method: 'GET',
+            mode: "cors",
+            cache: "no-cache",
+            headers: {
+                'Authorization': `Bearer ${userInfo.token}`,
+                'Content-Type': 'application/json'
+            },
+            redirect: "follow",
+            referrerPolicy: "no-referrer"
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            localStorage.setItem('token', data.token);
+            console.log(data);
+        } else {
+            console.error("Failed to fetch: ", response.status, response.statusText);
+        }
+    } catch (error) {
+        console.error("Network error:", error);
+    }
+    
+};
+
 export default function PersistentDrawerbox({setRefreshKey}: DrawerInterface) {
     const navigate = useNavigate();
 
@@ -74,6 +104,7 @@ return (
                 onClick={
                     () => {
                         adminInfo.userRegisterActive = false
+                        handleUserList()
                         navigate('/adminlistpage')
                     }
                 } 

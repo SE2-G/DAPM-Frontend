@@ -60,6 +60,7 @@ export default function PersistentDrawerbox() {
                 userInfo.roles = data.roles;
                 userInfo.userName = data.userName;
                 userInfo.fullName = data.fullName;
+                userInfo.token = data.token;
 
                 navigate('/userpage'); 
             } else {
