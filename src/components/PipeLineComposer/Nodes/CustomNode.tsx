@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { memo } from "react";
+import { memo,useEffect } from "react";
 import { Handle, NodeProps, Position } from "reactflow";
 import { NodeData, OperatorNodeData } from "../../../redux/states/pipelineState";
 import CircularProgress from '@mui/material/CircularProgress';
@@ -9,9 +9,13 @@ import { RootState } from "../../../redux/states";
 import { useSelector } from 'react-redux';
 import ErrorIcon from '@mui/icons-material/Error';
 
+
+
 function CustomNode({data, selected}: NodeProps<OperatorNodeData>) {
     const isDeploying = useSelector((state:RootState) => state.pipelineState.isDeploying);
     const statusType = useSelector((state: RootState) => state.pipelineState.statusType);
+    //console.log("ISDEPLOYING>>>>>>>>>" + isDeploying);
+    //console.log("STATUSTYPE>>>>>>>>>>>" + statusType);
 
     const getStatusIcon = () => {
       if (isDeploying && statusType === 'info') {
@@ -59,3 +63,4 @@ function CustomNode({data, selected}: NodeProps<OperatorNodeData>) {
 CustomNode.displayName = "CustomNode";
 
 export default memo(CustomNode);
+

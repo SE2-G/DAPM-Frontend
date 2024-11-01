@@ -6,7 +6,7 @@ import ErrorIcon from '@mui/icons-material/Error';
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getActiveFlowData, getActivePipeline } from "../../redux/selectors";
-import { useState, useEffect } from "react";
+import { useState, useEffect,useRef } from "react";
 import { updatePipelineName } from "../../redux/slices/pipelineSlice";
 import EditIcon from '@mui/icons-material/Edit';
 import { Node } from "reactflow";
@@ -17,6 +17,12 @@ import { getHandleId, getNodeId } from "./Flow";
 import { setIsDeploying, setStatusType } from "../../redux/slices/pipelineSlice";
 
 import { RootState } from "../../redux/states";
+
+import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty';
+
+import DataSinkNode from './Nodes/DataSinkNode';
+import DataSourceNode from './Nodes/DataSourceNode';
+import CustomNode from './Nodes/CustomNode';
 
 
 export default function PipelineAppBar() {
@@ -31,6 +37,8 @@ export default function PipelineAppBar() {
   const [progress, setProgress] = useState(0);
   //const [progress] = useState(0);
   const [showStatusBar, setShowStatusBar] = useState(false);
+  const [nodePositions, setNodePositions] = useState({});
+  //const [isDeploying, setIsDeploying] = useState(false);
   
 
   useEffect(() => {
@@ -186,18 +194,18 @@ export default function PipelineAppBar() {
 
       setProgress(25);
       setStatusMessage('Uploading pipeline...');
-      dispatch(setStatusType('info'));
+      setStatusType('info');
       const pipelineId = await putPipeline(selectedOrg.id, selectedRepo.id, requestData);
 
       setProgress(50);
       setStatusMessage('Creating execution instance...');
-      dispatch(setStatusType('info'));
+      setStatusType('info');
 
       const executionId = await putExecution(selectedOrg.id, selectedRepo.id, pipelineId);
 
       setProgress(75);
       setStatusMessage('Executing pipeline...');
-      dispatch(setStatusType('info'));
+      setStatusType('info');
 
       await putCommandStart(selectedOrg.id, selectedRepo.id, pipelineId, executionId);
 
@@ -322,6 +330,7 @@ export default function PipelineAppBar() {
           Deploy pipeline
         </Button>
       </Toolbar>
+
 
       {showStatusBar && (
         <Box

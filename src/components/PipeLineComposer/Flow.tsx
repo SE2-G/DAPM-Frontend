@@ -356,6 +356,7 @@ const BasicFlow = () => {
       {showStatusEnable && <ConfigurationSidebar selectableProp={undefined} />}
       {lastSelected && <ConfigurationSidebar selectableProp={lastSelected} />}
       
+      
     </ReactFlowStyled>
   );
 };

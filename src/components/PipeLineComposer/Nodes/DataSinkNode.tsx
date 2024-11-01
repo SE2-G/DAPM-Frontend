@@ -67,3 +67,4 @@ const DataSinkNode = ({ data, selected }: NodeProps<NodeData>) => {
 DataSinkNode.displayName = "DataSink";
 
 export default memo(DataSinkNode);
+
