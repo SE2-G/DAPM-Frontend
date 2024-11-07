@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { memo } from "react";
+import { memo, useEffect } from "react";
 import { Handle, NodeProps, Position } from "reactflow";
 import SaveIcon from '@mui/icons-material/Save';
 import { NodeData } from "../../../redux/states/pipelineState";
@@ -8,15 +8,26 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty';
 import ErrorIcon from '@mui/icons-material/Error';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from "../../../redux/states";
+import { resetPipelineState } from "../../../redux/slices/pipelineSlice";
 
 
 
 const DataSinkNode = ({ data, selected }: NodeProps<NodeData>) => {
+    const dispatch = useDispatch();
     const isDeploying = useSelector((state:RootState) => state.pipelineState.isDeploying);
     //const progress = useSelector((state: RootState) => state.pipelineState.progress);
     const statusType = useSelector((state: RootState) => state.pipelineState.statusType);
+
+    useEffect(() => {
+      
+        dispatch(resetPipelineState());
+      return () => {
+          console.log('DataSinkNode is unmounting');
+          
+      };
+  }, [dispatch]);
     
     const getStatusIcon = () => {
         if (isDeploying && statusType === 'info') {

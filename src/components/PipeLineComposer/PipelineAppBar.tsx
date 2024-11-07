@@ -14,7 +14,7 @@ import { DataSinkNodeData, DataSourceNodeData, OperatorNodeData } from "../../re
 import { putCommandStart, putExecution, putPipeline } from "../../services/backendAPI";
 import { getOrganizations, getRepositories } from "../../redux/selectors/apiSelector";
 import { getHandleId, getNodeId } from "./Flow";
-import { setIsDeploying, setStatusType } from "../../redux/slices/pipelineSlice";
+import { setIsDeploying, setStatusType, resetPipelineState } from "../../redux/slices/pipelineSlice";
 
 import { RootState } from "../../redux/states";
 
@@ -54,6 +54,10 @@ export default function PipelineAppBar() {
       }
     }
   }, [statusMessage, statusType]);
+
+  
+
+
 
   const handleStartEditing = () => {
     setIsEditing(true);

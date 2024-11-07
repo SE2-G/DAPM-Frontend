@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { memo } from "react";
+import { memo, useEffect } from "react";
 import { Handle, NodeProps, Position } from "reactflow";
 import SourceIcon from '@mui/icons-material/Source';
 import { NodeData } from "../../../redux/states/pipelineState";
@@ -7,14 +7,23 @@ import CircularProgress from '@mui/material/CircularProgress';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty';
 import { RootState } from "../../../redux/states";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import ErrorIcon from '@mui/icons-material/Error';
-
+import { resetPipelineState } from "../../../redux/slices/pipelineSlice";
 
 const DataSourceNode = ({ data, selected }: NodeProps<NodeData>) => {
+    const dispatch = useDispatch();
     const isDeploying = useSelector((state:RootState) => state.pipelineState.isDeploying);
     const statusType = useSelector((state: RootState) => state.pipelineState.statusType);
 
+    useEffect(() => {
+          dispatch(resetPipelineState());
+      return () => {
+          console.log('DataSourceNode is unmounting');
+          
+      };
+  }, [dispatch]);
+  
     const getStatusIcon = () => {
         if (isDeploying && statusType === 'info') {
           return <CircularProgress size={24} sx={{ color: 'orange' }} />;

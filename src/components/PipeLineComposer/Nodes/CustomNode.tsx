@@ -6,28 +6,39 @@ import CircularProgress from '@mui/material/CircularProgress';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty';
 import { RootState } from "../../../redux/states";
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
 import ErrorIcon from '@mui/icons-material/Error';
+import { resetPipelineState } from "../../../redux/slices/pipelineSlice";
 
 
 
 function CustomNode({data, selected}: NodeProps<OperatorNodeData>) {
+    const dispatch = useDispatch();
     const isDeploying = useSelector((state:RootState) => state.pipelineState.isDeploying);
     const statusType = useSelector((state: RootState) => state.pipelineState.statusType);
     //console.log("ISDEPLOYING>>>>>>>>>" + isDeploying);
     //console.log("STATUSTYPE>>>>>>>>>>>" + statusType);
 
+    useEffect(() => {
+      dispatch(resetPipelineState());
+
+      return () => {
+          console.log('CustomNode is unmounting');
+          
+      };
+  }, [dispatch]);
+
     const getStatusIcon = () => {
-      if (isDeploying && statusType === 'info') {
-        return <CircularProgress size={24} sx={{ color: 'orange' }} />;
-      } else if (statusType === 'error') {
-        return <ErrorIcon color="error" />
-      } else if (statusType === 'success') {
-        return <CheckCircleIcon color="success" />
-      } else {
-        return <HourglassEmptyIcon color="disabled" /> // Default or idle icon
-      }
-    };
+        if (isDeploying && statusType === 'info') {
+          return <CircularProgress size={24} sx={{ color: 'orange' }} />;
+        } else if (statusType === 'error') {
+          return <ErrorIcon color="error" />
+        } else if (statusType === 'success') {
+          return <CheckCircleIcon color="success" />
+        } else {
+          return <HourglassEmptyIcon color="disabled" /> // Default or idle icon
+        }
+      };
 
   return (
     <div>

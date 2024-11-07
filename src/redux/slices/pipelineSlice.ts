@@ -207,6 +207,11 @@ const pipelineSlice = createSlice({
     setStatusType: (state, action:PayloadAction<string>) => {
     state.statusType = action.payload;
     },
+    resetPipelineState: (state) => {
+      // Reset state to initial values
+      state.isDeploying = initialState.isDeploying;
+      state.statusType = initialState.statusType;
+  },
   
   }
 })
@@ -242,6 +247,7 @@ export const {
   setIsDeploying,
   //setProgress,
   setStatusType,
+  resetPipelineState,
 } = pipelineSlice.actions
 
 export default pipelineSlice.reducer 
