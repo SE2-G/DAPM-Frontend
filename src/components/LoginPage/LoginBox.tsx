@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { TextField, Typography, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { userInfo } from '../../redux/slices/userSlice';
+import { fetchStatusLoop, fetchStatus } from '../../services/backendAPI';
 
 export default function PersistentDrawerbox() {
     const [username, setUsername] = useState<string>('');
@@ -42,7 +43,7 @@ export default function PersistentDrawerbox() {
         setError(null);
 
         try {
-            const response = await fetch('http://localhost:5002/api/Authentication/login', {
+            const response = await fetch('http://localhost:5000/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -54,13 +55,15 @@ export default function PersistentDrawerbox() {
             });
 
             if (response.ok) {
-                const data = await response.json();
+                const jsonData = await response.json();
+                const data = await fetchStatusLoop(jsonData.ticketId as string);
+                
                 localStorage.setItem('token', data.token);
                 console.log(data)
-                userInfo.roles = data.roles;
-                userInfo.userName = data.userName;
-                userInfo.fullName = data.fullName;
-                userInfo.token = data.token;
+                userInfo.roles = data.Roles;
+                userInfo.userName = data.UserName;
+                userInfo.fullName = data.FullName;
+                userInfo.token = data.Token;
 
                 navigate('/userpage'); 
             } else {

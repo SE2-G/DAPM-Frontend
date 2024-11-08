@@ -7,6 +7,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 
+import { fetchStatusLoop } from '../../services/backendAPI';
 import { userInfo, adminInfo } from '../../redux/slices/userSlice';
 import { useNavigate } from 'react-router-dom';
 
@@ -25,11 +26,9 @@ interface DrawerInterface {
 }
 
 const handleUserList = async () => {
-    
-    console.log(userInfo.token)
 
     try {
-        const response = await fetch('http://localhost:5002/api/UserManagement/GetUsers', {
+        const response = await fetch('http://localhost:5000/auth/GetUsers', {
             method: 'GET',
             mode: "cors",
             cache: "no-cache",
@@ -42,7 +41,8 @@ const handleUserList = async () => {
         });
 
         if (response.ok) {
-            const data = await response.json();
+            const jsonData = await response.json();
+            const data = await fetchStatusLoop(jsonData.ticketId as string);
             adminInfo.userList = data;
         } else {
             console.error("Failed to fetch: ", response.status, response.statusText);

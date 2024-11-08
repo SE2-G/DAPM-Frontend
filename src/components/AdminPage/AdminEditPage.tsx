@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { List, ListItem, ListItemButton, ListItemText, Typography, TextField, Box, Button } from '@mui/material';
 import { adminInfo, userInfo} from '../../redux/slices/userSlice';
 import { Navigate, useNavigate } from 'react-router-dom';
+import { fetchStatusLoop } from '../../services/backendAPI';
 
 interface DrawerInterface{
     refreshKey: number
@@ -50,7 +51,7 @@ export default function PersistentDrawerbox({refreshKey} : DrawerInterface) {
 
         try {
 
-            const response = await fetch('http://localhost:5002/api/Authentication/register', {
+            const response = await fetch('http://localhost:5000/auth/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -64,7 +65,9 @@ export default function PersistentDrawerbox({refreshKey} : DrawerInterface) {
             });
 
             if (response.ok) {
-                const data = await response.json();
+                const jsonData = await response.json();
+                const data = await fetchStatusLoop(jsonData.ticketId as string);
+
                 localStorage.setItem('token', data.token);
                  
             } else {
