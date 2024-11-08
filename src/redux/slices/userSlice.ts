@@ -5,6 +5,18 @@ interface UserInfo {
     token: string;
 }
 
+// Define the User interface
+export interface User {
+    id: number;
+    fullName: string;
+    userName: string;
+    password: string;
+    organizationName: string;
+    organizationId: string;
+    roles: string[];
+    token: string | null;
+}
+
 export const userInfo : UserInfo = {
     fullName: "",
     roles: [],
@@ -14,6 +26,7 @@ export const userInfo : UserInfo = {
   
 export const adminInfo = {
     userRegisterActive: true,
-    userList: []
+    userList: [],
+    userSelected: null as User | null,
 }
 

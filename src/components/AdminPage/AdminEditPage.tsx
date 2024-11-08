@@ -1,7 +1,7 @@
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useEffect, useState } from 'react';
 import { List, ListItem, ListItemButton, ListItemText, Typography, TextField, Box, Button } from '@mui/material';
-import { adminInfo} from '../../redux/slices/userSlice';
+import { adminInfo, userInfo} from '../../redux/slices/userSlice';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 interface DrawerInterface{
@@ -18,9 +18,20 @@ export default function PersistentDrawerbox({refreshKey} : DrawerInterface) {
     const [username, setUsername] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [fullName, setFullName] = useState<string>('');
+    const [id, setId] = useState<number>(-1);
     const [error, setError] = useState<string | null>(null);
 
     const boxTitle = adminInfo.userRegisterActive ? "Register User" : "Edit user"
+
+    useEffect(() => {
+        if (!adminInfo.userRegisterActive && adminInfo.userSelected) {
+            setId(adminInfo.userSelected.id);
+            setUsername(adminInfo.userSelected.userName);
+            setFullName(adminInfo.userSelected.fullName);
+            setPassword(adminInfo.userSelected.password);
+            setRoles(adminInfo.userSelected.roles);
+        }
+    }, [adminInfo.userRegisterActive, adminInfo.userSelected]);
 
     const handleRemoveRole = (role: string) => {
         setRoles((prevRoles) => prevRoles.filter((r) => r !== role));
@@ -38,6 +49,7 @@ export default function PersistentDrawerbox({refreshKey} : DrawerInterface) {
         setError(null);
 
         try {
+
             const response = await fetch('http://localhost:5002/api/Authentication/register', {
                 method: 'POST',
                 headers: {
@@ -55,6 +67,38 @@ export default function PersistentDrawerbox({refreshKey} : DrawerInterface) {
                 const data = await response.json();
                 localStorage.setItem('token', data.token);
                  
+            } else {
+                const errorMessage = await response.text();
+                setError(errorMessage);
+            }
+        } catch (err) {
+            setError('Login failed. Please try again.');
+        }
+    };
+
+    const handleEditUser = async () => {
+        setError(null);
+
+        try {
+            const response = await fetch('http://localhost:5002/api/UserManagement/EditAsAdmin', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${userInfo.token}`,
+                },
+                body: JSON.stringify({
+                    id: id,
+                    userName: username,
+                    password: (password == undefined) ? "" : password,
+                    fullName: fullName,
+                    roles: roles
+                }),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                navigate('\adminlistpage')
+                
             } else {
                 const errorMessage = await response.text();
                 setError(errorMessage);
@@ -85,7 +129,7 @@ export default function PersistentDrawerbox({refreshKey} : DrawerInterface) {
                     boxShadow: 3,            
                 }}
             >
-
+                {!adminInfo.userRegisterActive &&
                 <Button 
                     sx={{ 
                         position: 'absolute', // Position the button absolutely
@@ -97,6 +141,7 @@ export default function PersistentDrawerbox({refreshKey} : DrawerInterface) {
                 >
                     <ArrowBackIcon />
                 </Button>
+                }
                 
                 <Typography variant="h5" sx={{ mb: 2, textAlign: 'center', color: 'white' }}>
                     {boxTitle}
@@ -154,7 +199,7 @@ export default function PersistentDrawerbox({refreshKey} : DrawerInterface) {
                     variant="contained"
                     sx={{ backgroundColor: '#444', color: '#fff' }}  
                     fullWidth
-                    onClick={() => handleRegistration()}
+                    onClick={() => {adminInfo.userRegisterActive ? handleRegistration() : handleEditUser()}}
                 >
                     Submit
                 </Button>
