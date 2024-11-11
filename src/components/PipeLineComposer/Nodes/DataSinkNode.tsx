@@ -20,14 +20,14 @@ const DataSinkNode = ({ data, selected }: NodeProps<NodeData>) => {
     //const progress = useSelector((state: RootState) => state.pipelineState.progress);
     const statusType = useSelector((state: RootState) => state.pipelineState.statusType);
 
-    useEffect(() => {
-      
-        dispatch(resetPipelineState());
-      return () => {
-          console.log('DataSinkNode is unmounting');
-          
-      };
-  }, [dispatch]);
+  //  useEffect(() => {
+  //    
+  //      dispatch(resetPipelineState());
+  //    return () => {
+  //        console.log('DataSinkNode is unmounting');
+  //        
+  //    };
+  //}, [dispatch]);
     
     const getStatusIcon = () => {
         if (isDeploying && statusType === 'info') {

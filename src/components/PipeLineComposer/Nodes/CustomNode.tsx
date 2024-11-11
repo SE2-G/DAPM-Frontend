@@ -19,14 +19,14 @@ function CustomNode({data, selected}: NodeProps<OperatorNodeData>) {
     //console.log("ISDEPLOYING>>>>>>>>>" + isDeploying);
     //console.log("STATUSTYPE>>>>>>>>>>>" + statusType);
 
-    useEffect(() => {
-      dispatch(resetPipelineState());
-
-      return () => {
-          console.log('CustomNode is unmounting');
-          
-      };
-  }, [dispatch]);
+  //  useEffect(() => {
+  //    dispatch(resetPipelineState());
+//
+  //    return () => {
+  //        console.log('CustomNode is unmounting');
+  //        
+  //    };
+  //}, [dispatch]);
 
     const getStatusIcon = () => {
         if (isDeploying && statusType === 'info') {

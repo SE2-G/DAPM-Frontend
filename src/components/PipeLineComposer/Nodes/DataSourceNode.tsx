@@ -16,13 +16,13 @@ const DataSourceNode = ({ data, selected }: NodeProps<NodeData>) => {
     const isDeploying = useSelector((state:RootState) => state.pipelineState.isDeploying);
     const statusType = useSelector((state: RootState) => state.pipelineState.statusType);
 
-    useEffect(() => {
-          dispatch(resetPipelineState());
-      return () => {
-          console.log('DataSourceNode is unmounting');
-          
-      };
-  }, [dispatch]);
+  //  useEffect(() => {
+  //        dispatch(resetPipelineState());
+  //    return () => {
+  //        console.log('DataSourceNode is unmounting');
+  //        
+  //    };
+  //}, [dispatch]);
   
     const getStatusIcon = () => {
         if (isDeploying && statusType === 'info') {
