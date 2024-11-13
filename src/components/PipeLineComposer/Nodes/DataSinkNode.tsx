@@ -16,30 +16,28 @@ import { resetPipelineState } from "../../../redux/slices/pipelineSlice";
 
 const DataSinkNode = ({ data, selected }: NodeProps<NodeData>) => {
     const dispatch = useDispatch();
-    const isDeploying = useSelector((state:RootState) => state.pipelineState.isDeploying);
-    //const progress = useSelector((state: RootState) => state.pipelineState.progress);
-    const statusType = useSelector((state: RootState) => state.pipelineState.statusType);
+  const isDeploying = useSelector((state:RootState) => state.pipelineState.isDeploying);
+  //const progress = useSelector((state: RootState) => state.pipelineState.progress);
+  const statusType = useSelector((state: RootState) => state.pipelineState.statusType);
 
-  //  useEffect(() => {
-  //    
-  //      dispatch(resetPipelineState());
-  //    return () => {
-  //        console.log('DataSinkNode is unmounting');
-  //        
-  //    };
-  //}, [dispatch]);
-    
-    const getStatusIcon = () => {
-        if (isDeploying && statusType === 'info') {
-          return <CircularProgress size={24} sx={{ color: 'orange' }} />;
-        } else if (statusType === 'error') {
-          return <ErrorIcon color="error" />;
-        } else if (statusType === 'success') {
-          return <CheckCircleIcon color="success" />;
-        } else {
-          return <HourglassEmptyIcon color="disabled" />; // Default or idle icon
-        }
-      };
+  
+  const getStatusIcon = () => {
+    try{
+      if (isDeploying && statusType === 'info') {
+        return <CircularProgress size={24} sx={{ color: 'orange' }} />;
+      } else if (statusType === 'error') {
+        return <ErrorIcon color="error" />;
+      } else if (statusType === 'success') {
+        return <CheckCircleIcon color="success" />;
+      } else {
+        return <HourglassEmptyIcon color="disabled" />; // Default or idle icon
+      }
+    } catch(error){
+        console.error('Error occurred while getting status icon:', error);
+        return null;
+
+    }
+    };
 
     return (
         <div>
@@ -47,7 +45,7 @@ const DataSinkNode = ({ data, selected }: NodeProps<NodeData>) => {
             {/*{isDeploying && <HourglassEmptyIcon fontSize="large" color="disabled" />}
             <CircularProgress color="primary" />
             <CheckCircleIcon fontSize="large" color="success" />*/}
-            {getStatusIcon()}
+             {/*getStatusIcon()*/} 
         </div>
 
         <Box sx={{ backgroundColor: '#556677', padding: '10px', color: 'white', position: "relative", border: selected ? '2px solid #007bff' : '2px solid #556677' }}>

@@ -2,7 +2,7 @@ import { styled } from '@mui/material/styles';
 import Drawer from '@mui/material/Drawer';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
-import { Edge, Node } from "reactflow";
+import { Edge, Node, ReactFlowProvider } from "reactflow";
 import { NodeData } from '../../redux/states/pipelineState';
 import { getEdges, getNodes } from '../../redux/selectors';
 import { useDispatch,useSelector } from 'react-redux';
@@ -53,6 +53,7 @@ export default function PersistentDrawerRight({ selectableProp }: ConfigurationS
     return (null)
 
   return (
+    <ReactFlowProvider>
     <Drawer
       PaperProps={{
         sx: {
@@ -86,6 +87,6 @@ export default function PersistentDrawerRight({ selectableProp }: ConfigurationS
     
 
 
-    </Drawer>
+    </Drawer></ReactFlowProvider>
   );
 }

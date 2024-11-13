@@ -12,8 +12,9 @@ import { getPipelines } from '../../redux/selectors';
 import FlowDiagram from './ImageGeneration/FlowDiagram';
 import ReactDOM from 'react-dom';
 import { toPng } from 'html-to-image';
-import { getNodesBounds, getViewportForBounds } from 'reactflow';
+import { Edge, getNodesBounds, getViewportForBounds } from 'reactflow';
 import { v4 as uuidv4 } from 'uuid';
+import { useEffect } from 'react';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -23,10 +24,18 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
+interface PipelineProps {
+  nodes: Node[];
+  edges: Edge[];
+}
+
+
 export default function AutoGrid() {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
+
+  
 
   const pipelines = useSelector(getPipelines)
 
@@ -34,45 +43,50 @@ export default function AutoGrid() {
     dispatch(addNewPipeline({ id: `pipeline-${uuidv4()}`, flowData: { nodes: [], edges: [] } }));
     { navigate("/pipeline") }
   }
+  const container = document.createElement('div');
 
   pipelines.map(({ pipeline: flowData, id, name }) => {
     const nodes = flowData.nodes;
     const edges = flowData.edges;
     //console.log(name, nodes, edges);
     const pipelineId = id;
-    const container = document.createElement('div');
+    
     container.style.position = 'absolute';
     container.style.top = '-10000px';
     container.id = pipelineId;
     document.body.appendChild(container);
 
-    ReactDOM.render(
-      <FlowDiagram nodes={nodes} edges={edges} />,
-      container,
-      () => {
-
-        const width = 800
-        const height = 600
-
-        const nodesBounds = getNodesBounds(nodes!);
-        const { x, y, zoom } = getViewportForBounds(nodesBounds, width, height, 0.5, 2, 1);
-
-        toPng(document.querySelector(`#${pipelineId} .react-flow__viewport`) as HTMLElement, {
-          backgroundColor: '#333',
-          width: width,
-          height: height,
-          style: {
-            width: `${width}`,
-            height: `${height}`,
-            transform: `translate(${x}px, ${y}px) scale(${zoom})`,
-          },
-        }).then((dataUrl) => {
-          dispatch(setImageData({ id: pipelineId, imgData: dataUrl }));
-          document.body.removeChild(container);
-        });
-      }
-    );
+    //ReactDOM.render(
+    //  <FlowDiagram nodes={nodes} edges={edges} />,
+    //  container,
+    //  () => {
+//
+    //    const width = 800
+    //    const height = 600
+//
+    //    const nodesBounds = getNodesBounds(nodes!);
+    //    const { x, y, zoom } = getViewportForBounds(nodesBounds, width, height, 0.5, 2, 1);
+//
+    //    toPng(document.querySelector(`#${pipelineId} .react-flow__viewport`) as HTMLElement, {
+    //      backgroundColor: '#333',
+    //      width: width,
+    //      height: height,
+    //      style: {
+    //        width: `${width}`,
+    //        height: `${height}`,
+    //        transform: `translate(${x}px, ${y}px) scale(${zoom})`,
+    //      },
+    //    }).then((dataUrl) => {
+    //      dispatch(setImageData({ id: pipelineId, imgData: dataUrl }));
+    //      document.body.removeChild(container);
+    //    });
+    //  }
+    //);
   });
+
+
+
+
 
   return (
     <Box sx={{ flexGrow: 1, flexBasis: "100%" }} >
@@ -90,3 +104,5 @@ export default function AutoGrid() {
     </Box>
   );
 }
+//};
+

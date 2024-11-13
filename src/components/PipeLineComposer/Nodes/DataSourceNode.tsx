@@ -12,34 +12,27 @@ import ErrorIcon from '@mui/icons-material/Error';
 import { resetPipelineState } from "../../../redux/slices/pipelineSlice";
 
 const DataSourceNode = ({ data, selected }: NodeProps<NodeData>) => {
-    const dispatch = useDispatch();
-    const isDeploying = useSelector((state:RootState) => state.pipelineState.isDeploying);
-    const statusType = useSelector((state: RootState) => state.pipelineState.statusType);
+  const dispatch = useDispatch();
+ const isDeploying = useSelector((state:RootState) => state.pipelineState.isDeploying);
+ const statusType = useSelector((state: RootState) => state.pipelineState.statusType);
 
-  //  useEffect(() => {
-  //        dispatch(resetPipelineState());
-  //    return () => {
-  //        console.log('DataSourceNode is unmounting');
-  //        
-  //    };
-  //}, [dispatch]);
-  
-    const getStatusIcon = () => {
-        if (isDeploying && statusType === 'info') {
-          return <CircularProgress size={24} sx={{ color: 'orange' }} />;
-        } else if (statusType === 'error') {
-          return <ErrorIcon color="error" />;
-        } else if (statusType === 'success') {
-          return <CheckCircleIcon color="success" />;
-        } else {
-          return <HourglassEmptyIcon color="disabled" />; // Default or idle icon
-        }
-      };
+
+ const getStatusIcon = () => {
+     if (isDeploying && statusType === 'info') {
+       return <CircularProgress size={24} sx={{ color: 'orange' }} />;
+     } else if (statusType === 'error') {
+       return <ErrorIcon color="error" />;
+     } else if (statusType === 'success') {
+       return <CheckCircleIcon color="success" />;
+     } else {
+       return <HourglassEmptyIcon color="disabled" />; // Default or idle icon
+     }
+   };
 
     return (
        <div>
         <div style={{display: "flex",justifyContent: "center", alignItems: "center", height: "100%",marginBottom:"5px"}}>
-            {getStatusIcon()}
+             {/*getStatusIcon()*/}
         </div>
          
         <Box sx={{ backgroundColor: '#556677', padding: '10px', color: 'white', position: "relative", border: selected ? '2px solid #007bff' : '2px solid #556677' }}>

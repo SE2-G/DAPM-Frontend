@@ -14,6 +14,8 @@ import LoginPage from "./routes/LoginPage";
 import { loadState, saveState } from "./redux/browser-storage";
 import React, { Component } from 'react'; 
 import { render } from "@testing-library/react";
+import ErrorBoundary from "./ErrorBoundary";
+
 
 // Configure redux-persist
 const persistConfig = {

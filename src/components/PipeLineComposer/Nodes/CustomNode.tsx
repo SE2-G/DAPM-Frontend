@@ -14,19 +14,11 @@ import { resetPipelineState } from "../../../redux/slices/pipelineSlice";
 
 function CustomNode({data, selected}: NodeProps<OperatorNodeData>) {
     const dispatch = useDispatch();
+
     const isDeploying = useSelector((state:RootState) => state.pipelineState.isDeploying);
     const statusType = useSelector((state: RootState) => state.pipelineState.statusType);
     //console.log("ISDEPLOYING>>>>>>>>>" + isDeploying);
     //console.log("STATUSTYPE>>>>>>>>>>>" + statusType);
-
-  //  useEffect(() => {
-  //    dispatch(resetPipelineState());
-//
-  //    return () => {
-  //        console.log('CustomNode is unmounting');
-  //        
-  //    };
-  //}, [dispatch]);
 
     const getStatusIcon = () => {
         if (isDeploying && statusType === 'info') {
@@ -43,7 +35,7 @@ function CustomNode({data, selected}: NodeProps<OperatorNodeData>) {
   return (
     <div>
         <div style={{display: "flex",justifyContent: "center", alignItems: "center", height: "100%",marginBottom:"5px"}}>
-          {getStatusIcon()}
+          {/*getStatusIcon()*/} 
         </div>
 
         <Box sx={{backgroundColor: '#556677', padding: '10px', color: 'white', position: "relative", border: selected ? '2px solid #007bff' : '2px solid #556677'}}>
