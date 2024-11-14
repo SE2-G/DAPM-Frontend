@@ -1,10 +1,14 @@
 import { Stream } from "stream";
 import { json } from "stream/consumers";
 
-const vmPath = `dapm1.compute.dtu.dk:5000`
+const vmPath = `se2-g.compute.dtu.dk:5000`
 const localPath = `localhost:5000`
 
-const path = localPath
+const path = vmPath
+
+export function getPath() {
+    return `http://`+path
+}
 
 export async function fetchStatus(ticket: string) {
 
@@ -19,6 +23,24 @@ export async function fetchStatus(ticket: string) {
     } catch (error) {
         console.error('Error fetching status:', error);
         return error;
+    }
+}
+
+export async function fetchStatusLoop(ticketId: string) {
+    try {
+        const maxRetries = 10;
+        const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
+        for (let retries = 0; retries < maxRetries; retries++) {
+            const data = await fetchStatus(ticketId);
+            if (data.status) {
+                return data.result.message;
+            }
+            await delay(1000); 
+        }
+
+    } catch (error) {
+        return error
     }
 }
 
