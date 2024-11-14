@@ -6,7 +6,8 @@ import { EdgeData, NodeData, NodeState, PipelineData, PipelineState } from "../s
 export const initialState: PipelineState = {
   pipelines: [],
   activePipelineId: "",
-  showStatusEnable: false
+  showStatusEnable: false,
+  nodeStatus: 0,
 }
 
 const takeSnapshot = (state: PipelineState) => {
@@ -190,6 +191,10 @@ const pipelineSlice = createSlice({
     toggleShowStatusEnable: (state) => {
       state.showStatusEnable = !state.showStatusEnable;
     },
+    setNodeStatus: (state, action) => {
+      state.nodeStatus = action.payload;
+    }
+    
   },
 })
 
@@ -219,7 +224,8 @@ export const {
   onConnect, 
   setNodes, 
   setEdges,
-  toggleShowStatusEnable
+  toggleShowStatusEnable,
+  setNodeStatus
 } = pipelineSlice.actions
 
 export default pipelineSlice.reducer 
