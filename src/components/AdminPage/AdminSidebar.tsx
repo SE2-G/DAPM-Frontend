@@ -1,4 +1,5 @@
 import { styled } from '@mui/material/styles';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -9,6 +10,7 @@ import Typography from '@mui/material/Typography';
 
 import { adminInfo } from '../../redux/slices/userSlice';
 import { useNavigate } from 'react-router-dom';
+import { Button } from '@mui/material';
 
 const drawerWidth = 240;
 
@@ -43,9 +45,24 @@ return (
         boxSizing: 'border-box',
         },
     }}
-    variant="permanent" // Make it a fixed sidebar
+    variant="permanent"
     anchor="left"
+    
     >
+
+    <Button 
+        sx={{ 
+            position: 'fixed',
+            transform: 'translateY(40%)',
+            left: '-5px',
+            color: 'white',
+            zIndex: 999,
+        }} 
+        onClick={() => {navigate('/userpage')}}
+    >
+        <ArrowBackIcon />
+    </Button>
+
     <DrawerHeader>
         <Typography variant="h5">Admin page</Typography>
     </DrawerHeader>

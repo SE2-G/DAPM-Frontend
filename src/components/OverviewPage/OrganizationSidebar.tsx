@@ -22,7 +22,7 @@ import { display } from 'html2canvas/dist/types/css/property-descriptors/display
 import OperatorUploadButton from './Buttons/OperatorUploadButton';
 import { Padding } from '@mui/icons-material';
 
-import { userInfo } from '../../redux/slices/userSlice';
+import { adminInfo, userInfo } from '../../redux/slices/userSlice';
 
 const drawerWidth = 240;
 
@@ -92,12 +92,15 @@ export default function PersistentDrawerLeft() {
       {userInfo.roles.includes("Admin") && (
         <Box sx={{ height: '60px', display: 'flex', alignItems: 'center', margin: '7px' }}>
         <ListItemButton 
-          onClick={() => navigate('/admineditpage')} 
+          onClick={() => {
+            navigate('/admineditpage');
+            adminInfo.userRegisterActive = true;
+          }}
           sx={{ 
             backgroundColor: '#444', 
             color: 'white', 
             textAlign: 'center', 
-            width: '100%' // Ensure it fills the Box container width
+            width: '100%'
           }}
         >
           <ListItemText primary="Admin Page" />
