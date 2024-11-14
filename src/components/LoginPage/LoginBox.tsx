@@ -63,16 +63,21 @@ export default function PersistentDrawerbox() {
                 const data = await fetchStatusLoop(jsonData.ticketId as string);
                 
                 
-                localStorage.setItem('token', data.token);
+                localStorage.setItem('token', data.result.message.token);
                 console.log(data)
-                userInfo.roles = data.Roles;
-                userInfo.userName = data.UserName;
-                userInfo.fullName = data.FullName;
-                userInfo.token = data.Token;
+                userInfo.roles = data.result.message.Roles;
+                userInfo.userName = data.result.message.UserName;
+                userInfo.fullName = data.result.message.FullName;
+                userInfo.token = data.result.message.Token;
 
-                dispatch(setAuthenticated(true))
+                if (data.result.succeeded){
+                    dispatch(setAuthenticated(true))
 
-                navigate('/userpage'); 
+                    navigate('/userpage'); 
+                } else{
+                    const errorMessage = await response.text();
+                    setError(errorMessage);
+                }
             } else {
                 const errorMessage = await response.text();
                 setError(errorMessage);

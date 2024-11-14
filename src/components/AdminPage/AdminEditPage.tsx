@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { List, ListItem, ListItemButton, ListItemText, Typography, TextField, Box, Button } from '@mui/material';
 import { adminInfo, userInfo} from '../../redux/slices/userSlice';
 import { Navigate, useNavigate } from 'react-router-dom';
-import { fetchStatusLoop, getPath } from '../../services/backendAPI';
+import { fetchMessageLoop, getPath } from '../../services/backendAPI';
 
 interface DrawerInterface{
     refreshKey: number
@@ -12,7 +12,6 @@ interface DrawerInterface{
 export default function PersistentDrawerbox({refreshKey} : DrawerInterface) {
     const navigate = useNavigate()
     
-    // Initial roles list
     const [roles, setRoles] = useState(["Standard"]);
     const [roleInput, setRoleInput] = useState("");
 
@@ -60,9 +59,9 @@ export default function PersistentDrawerbox({refreshKey} : DrawerInterface) {
     
             if (response.ok) {
                 const jsonData = await response.json();
-                const data = await fetchStatusLoop(jsonData.ticketId as string);
-                
-                navigate('/adminlistpage'); // Redirect to user list page after deletion
+                const data = await fetchMessageLoop(jsonData.ticketId as string);
+
+                navigate('/adminlistpage');
             } else {
                 const errorMessage = await response.text();
                 setError(errorMessage);
@@ -92,9 +91,10 @@ export default function PersistentDrawerbox({refreshKey} : DrawerInterface) {
 
             if (response.ok) {
                 const jsonData = await response.json();
-                const data = await fetchStatusLoop(jsonData.ticketId as string);
+                const data = await fetchMessageLoop(jsonData.ticketId as string);
 
                 localStorage.setItem('token', data.token);
+                navigate('/adminlistpage');
                  
             } else {
                 const errorMessage = await response.text();
@@ -126,7 +126,7 @@ export default function PersistentDrawerbox({refreshKey} : DrawerInterface) {
 
             if (response.ok) {
                 const data = await response.json();
-                navigate('\adminlistpage')
+                navigate('/adminlistpage')
                 
             } else {
                 const errorMessage = await response.text();
@@ -151,21 +151,26 @@ export default function PersistentDrawerbox({refreshKey} : DrawerInterface) {
             
             <Box 
                 sx={{
-                    width: 300,
-                    height: '53vh',
-                    padding: 3,              
-                    backgroundColor: '#292929', 
-                    borderRadius: 2,         
-                    boxShadow: 3,            
+                    width: '85%',
+                    maxWidth: 500,
+                    height: 'auto',
+                    padding: 3,
+                    backgroundColor: '#292929',
+                    borderRadius: 2,
+                    boxShadow: 3,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',            
                 }}
             >
                 {!adminInfo.userRegisterActive &&
                 <Button 
                     sx={{ 
-                        position: 'absolute', // Position the button absolutely
-                        top: 59,              // Adjust as needed
-                        left: 10,             // Adjust as needed
-                        color: 'white',       // Icon color
+                        position: 'fixed',
+                        transform: 'translateY(-10%)',
+                        left: '20px',
+                        color: 'white',
+                        zIndex: 999,
                     }} 
                     onClick={() => {navigate('/adminlistpage')}}
                 >
@@ -173,15 +178,15 @@ export default function PersistentDrawerbox({refreshKey} : DrawerInterface) {
                 </Button>
                 }
 
-                {/* Delete User Button */}
-                {!adminInfo.userRegisterActive && (
+                {!adminInfo.userRegisterActive && id != 1 && (
                     <Button
                         variant="contained"
                         color="error"
                         sx={{
-                            position: 'absolute',
-                            top: -50,
-                            center: 0,
+                            position: 'fixed',
+                            top: '-70px',
+                            left: '50%',
+                            zIndex: 9999,
                         }}
                         onClick={handleDeleteUser}
                     >

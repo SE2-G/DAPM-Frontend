@@ -2,12 +2,11 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface UserInfo {
     fullName: string;
-    roles: string[]; // Array of strings type for roles
+    roles: string[];
     userName: string;
     token: string;
 }
 
-// Define the User interface
 export interface User {
     Id: number;
     FullName: string;
@@ -37,7 +36,7 @@ export interface AuthState {
   }
   
   const initialState: AuthState = {
-    isAuthenticated: false, // Default to false
+    isAuthenticated: false,
   };
   
   const authSlice = createSlice({
