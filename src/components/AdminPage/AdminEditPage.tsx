@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { List, ListItem, ListItemButton, ListItemText, Typography, TextField, Box, Button } from '@mui/material';
 import { adminInfo, userInfo} from '../../redux/slices/userSlice';
 import { Navigate, useNavigate } from 'react-router-dom';
-import { fetchStatusLoop } from '../../services/backendAPI';
+import { fetchStatusLoop, getPath } from '../../services/backendAPI';
 
 interface DrawerInterface{
     refreshKey: number
@@ -26,11 +26,11 @@ export default function PersistentDrawerbox({refreshKey} : DrawerInterface) {
 
     useEffect(() => {
         if (!adminInfo.userRegisterActive && adminInfo.userSelected) {
-            setId(adminInfo.userSelected.id);
-            setUsername(adminInfo.userSelected.userName);
-            setFullName(adminInfo.userSelected.fullName);
-            setPassword(adminInfo.userSelected.password);
-            setRoles(adminInfo.userSelected.roles);
+            setId(adminInfo.userSelected.Id);
+            setUsername(adminInfo.userSelected.UserName);
+            setFullName(adminInfo.userSelected.FullName);
+            setPassword(adminInfo.userSelected.Password);
+            setRoles(adminInfo.userSelected.Roles);
         }
     }, [adminInfo.userRegisterActive, adminInfo.userSelected]);
 
@@ -46,12 +46,38 @@ export default function PersistentDrawerbox({refreshKey} : DrawerInterface) {
         }
     };
 
+    const handleDeleteUser = async () => {
+        setError(null);
+    
+        try {
+            const response = await fetch(getPath() + '/auth/deleteUser/'+username, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${userInfo.token}`,
+                },
+            });
+    
+            if (response.ok) {
+                const jsonData = await response.json();
+                const data = await fetchStatusLoop(jsonData.ticketId as string);
+                
+                navigate('/adminlistpage'); // Redirect to user list page after deletion
+            } else {
+                const errorMessage = await response.text();
+                setError(errorMessage);
+            }
+        } catch (err) {
+            setError('Failed to delete user. Please try again.');
+        }
+    };
+
     const handleRegistration = async () => {
         setError(null);
 
         try {
 
-            const response = await fetch('http://localhost:5000/auth/register', {
+            const response = await fetch(getPath()+'/auth/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -83,7 +109,7 @@ export default function PersistentDrawerbox({refreshKey} : DrawerInterface) {
         setError(null);
 
         try {
-            const response = await fetch('http://localhost:5002/api/UserManagement/EditAsAdmin', {
+            const response = await fetch(getPath()+'/auth/EditAsAdmin', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -122,6 +148,7 @@ export default function PersistentDrawerbox({refreshKey} : DrawerInterface) {
                 transform: 'translateY(15%)'
             }}
         >
+            
             <Box 
                 sx={{
                     width: 300,
@@ -145,6 +172,22 @@ export default function PersistentDrawerbox({refreshKey} : DrawerInterface) {
                     <ArrowBackIcon />
                 </Button>
                 }
+
+                {/* Delete User Button */}
+                {!adminInfo.userRegisterActive && (
+                    <Button
+                        variant="contained"
+                        color="error"
+                        sx={{
+                            position: 'absolute',
+                            top: -50,
+                            center: 0,
+                        }}
+                        onClick={handleDeleteUser}
+                    >
+                        Delete User
+                    </Button>
+                )}
                 
                 <Typography variant="h5" sx={{ mb: 2, textAlign: 'center', color: 'white' }}>
                     {boxTitle}
@@ -221,6 +264,7 @@ export default function PersistentDrawerbox({refreshKey} : DrawerInterface) {
                     marginLeft: 2,
                 }}
             >
+                
                 <Typography variant="h5" sx={{ p: 1, textAlign: 'center', color: 'white' }}>
                     Roles
                 </Typography>

@@ -7,8 +7,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 
-import { fetchStatusLoop } from '../../services/backendAPI';
-import { userInfo, adminInfo } from '../../redux/slices/userSlice';
+import { adminInfo } from '../../redux/slices/userSlice';
 import { useNavigate } from 'react-router-dom';
 
 const drawerWidth = 240;
@@ -24,33 +23,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 interface DrawerInterface {
     setRefreshKey: React.Dispatch<React.SetStateAction<number>>
 }
-
-const handleUserList = async () => {
-
-    try {
-        const response = await fetch('http://localhost:5000/auth/GetUsers', {
-            method: 'GET',
-            mode: "cors",
-            cache: "no-cache",
-            headers: {
-                'Authorization': `Bearer ${userInfo.token}`,
-                'Content-Type': 'application/json'
-            },
-            redirect: "follow",
-            referrerPolicy: "no-referrer"
-        });
-
-        if (response.ok) {
-            const jsonData = await response.json();
-            const data = await fetchStatusLoop(jsonData.ticketId as string);
-            adminInfo.userList = data;
-        } else {
-            console.error("Failed to fetch: ", response.status, response.statusText);
-        }
-    } catch (error) {
-        console.error("Network error:", error);
-    }
-};
 
 export default function PersistentDrawerbox({setRefreshKey}: DrawerInterface) {
     const navigate = useNavigate();
@@ -100,12 +72,11 @@ return (
             <ListItemText 
                 primary="User List"
                 onClick={
-                    () => {
+                    async () => {
                         adminInfo.userRegisterActive = false
-                        handleUserList()
                         navigate('/adminlistpage')
                     }
-                } 
+                }
             />
         </ListItemButton>
         </ListItem>

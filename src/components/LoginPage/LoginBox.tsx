@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import { TextField, Typography, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { userInfo } from '../../redux/slices/userSlice';
-import { fetchStatusLoop, fetchStatus } from '../../services/backendAPI';
+import { userInfo, setAuthenticated } from '../../redux/slices/userSlice';
+import { fetchStatusLoop, getPath } from '../../services/backendAPI';
+import { useDispatch } from 'react-redux';
 
 export default function PersistentDrawerbox() {
     const [username, setUsername] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [error, setError] = useState<string | null>(null);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    dispatch(setAuthenticated(false))
 
     const boxStyle: React.CSSProperties = {
         width: '300px',
@@ -43,7 +47,7 @@ export default function PersistentDrawerbox() {
         setError(null);
 
         try {
-            const response = await fetch('http://localhost:5000/auth/login', {
+            const response = await fetch(getPath()+'/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -58,12 +62,15 @@ export default function PersistentDrawerbox() {
                 const jsonData = await response.json();
                 const data = await fetchStatusLoop(jsonData.ticketId as string);
                 
+                
                 localStorage.setItem('token', data.token);
                 console.log(data)
                 userInfo.roles = data.Roles;
                 userInfo.userName = data.UserName;
                 userInfo.fullName = data.FullName;
                 userInfo.token = data.Token;
+
+                dispatch(setAuthenticated(true))
 
                 navigate('/userpage'); 
             } else {

@@ -1,3 +1,5 @@
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
 interface UserInfo {
     fullName: string;
     roles: string[]; // Array of strings type for roles
@@ -7,14 +9,14 @@ interface UserInfo {
 
 // Define the User interface
 export interface User {
-    id: number;
-    fullName: string;
-    userName: string;
-    password: string;
-    organizationName: string;
-    organizationId: string;
-    roles: string[];
-    token: string | null;
+    Id: number;
+    FullName: string;
+    UserName: string;
+    Password: string;
+    OrganizationName: string;
+    OrganizationId: string;
+    Roles: string[];
+    Token: string | null;
 }
 
 export const userInfo : UserInfo = {
@@ -29,4 +31,25 @@ export const adminInfo = {
     userList: [],
     userSelected: null as User | null,
 }
+
+export interface AuthState {
+    isAuthenticated: boolean;
+  }
+  
+  const initialState: AuthState = {
+    isAuthenticated: false, // Default to false
+  };
+  
+  const authSlice = createSlice({
+    name: "auth",
+    initialState,
+    reducers: {
+      setAuthenticated(state, action: PayloadAction<boolean>) {
+        state.isAuthenticated = action.payload;
+      },
+    },
+  });
+  
+  export const { setAuthenticated } = authSlice.actions;
+  export default authSlice.reducer;
 
