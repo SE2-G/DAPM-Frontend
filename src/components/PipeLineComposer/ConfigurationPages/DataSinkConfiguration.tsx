@@ -41,8 +41,7 @@ export default function DataSinkConfiguration({ nodeprop }: AlgorithmConfugurati
   return (
     <List>
       <>
-      {showTemplateData ?(
-        <>
+        
         <ListItem>
           <ListItemText primary={`Organization - ${parentNode?.data?.label}`} />
         </ListItem>
@@ -60,8 +59,7 @@ export default function DataSinkConfiguration({ nodeprop }: AlgorithmConfugurati
             </Select>
           </Box>
         </ListItem>
-        </>) : (
-          <></>)}
+    
       </>
     </List>
   );
