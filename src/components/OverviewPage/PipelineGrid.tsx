@@ -32,7 +32,7 @@ export default function AutoGrid() {
 
   const createNewPipeline = () => {
     dispatch(addNewPipeline({ id: `pipeline-${uuidv4()}`, flowData: { nodes: [], edges: [] } }));
-    { navigate("/pipeline") }
+    { navigate("/pipelineTemplate") }
   }
 
   pipelines.map(({ pipeline: flowData, id, name }) => {

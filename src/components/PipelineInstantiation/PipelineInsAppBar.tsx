@@ -7,14 +7,13 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getActiveFlowData, getActivePipeline } from "../../redux/selectors";
 import { useState, useEffect } from "react";
-import { addNewPipeline, updatePipelineName } from "../../redux/slices/pipelineSlice";
+import { updatePipelineName } from "../../redux/slices/pipelineSlice";
 import EditIcon from '@mui/icons-material/Edit';
 import { Node } from "reactflow";
 import { DataSinkNodeData, DataSourceNodeData, OperatorNodeData } from "../../redux/states/pipelineState";
 import { putCommandStart, putExecution, putPipeline } from "../../services/backendAPI";
 import { getOrganizations, getRepositories } from "../../redux/selectors/apiSelector";
-import { getHandleId, getNodeId } from "./Flow";
-import { v4 as uuidv4 } from 'uuid';
+import { getHandleId, getNodeId } from "../PipeLineComposer/Flow";
 import { showTemplateData } from "../../redux/slices/pipelineSlice";
 
 export default function PipelineAppBar() {
@@ -41,7 +40,15 @@ export default function PipelineAppBar() {
     }
   }, [statusMessage, statusType]);
 
-  
+  useEffect(() => {
+    // Set showTemplateData to false on mount
+    dispatch(showTemplateData(false));
+
+    // Cleanup function to reset showTemplateData to true on unmount
+    return () => {
+      dispatch(showTemplateData(true));
+    };
+  }, [dispatch]);
 
   const handleStartEditing = () => {
     setIsEditing(true);
@@ -61,21 +68,6 @@ export default function PipelineAppBar() {
   };
 
   const flowData = useSelector(getActiveFlowData);
-
- 
-  
-  const createNewPipeline = () => {
-    const templateFlowData = flowData;
-    
-    if(templateFlowData?.edges!=null&&templateFlowData.nodes!=null){
-      
-      dispatch(addNewPipeline({ id: `pipeline-${uuidv4()}`, flowData: templateFlowData }));
-      { navigate("/pipelineInstantiation") }
-      
-    }
-    dispatch(showTemplateData(false));
-    
-  }
 
   const generateJson = async () => {
     try {
@@ -200,7 +192,7 @@ export default function PipelineAppBar() {
       const pipelineId = await putPipeline(selectedOrg.id, selectedRepo.id, requestData);
 
       setProgress(50);
-      setStatusMessage('Creating execution');
+      setStatusMessage('Creating execution instance...');
       setStatusType('info');
 
       const executionId = await putExecution(selectedOrg.id, selectedRepo.id, pipelineId);
@@ -212,7 +204,7 @@ export default function PipelineAppBar() {
       await putCommandStart(selectedOrg.id, selectedRepo.id, pipelineId, executionId);
 
       setProgress(100);
-      setStatusMessage('Pipeline Template deployed successfully');
+      setStatusMessage('Pipeline deployed successfully');
       setStatusType('success');
 
     } catch (error: any) {
@@ -222,6 +214,39 @@ export default function PipelineAppBar() {
     }
   };
 
+  const generatePipelinedata = () => {
+    try {
+      setProgress(0);
+      setStatusMessage('Exporting pipeline...');
+      setStatusType('info');
+
+      const pipelineData = {
+        nodes: flowData?.nodes || [],
+        edges: flowData?.edges || [],
+      };
+
+      const jsonString = JSON.stringify(pipelineData, null, 2);
+
+      const blob = new Blob([jsonString], { type: 'application/json' });
+
+      const url = URL.createObjectURL(blob);
+
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `${pipelineName || 'pipeline'}.json`;
+      link.click();
+
+      URL.revokeObjectURL(url);
+
+      setProgress(100);
+      setStatusMessage('Pipeline exported successfully');
+      setStatusType('success');
+    } catch (error: any) {
+      setProgress(100);
+      setStatusMessage('Error exporting pipeline: ' + error.message);
+      setStatusType('error');
+    }
+  };
 
   const getStatusIcon = () => {
     if (statusType === 'success') {
@@ -266,7 +291,7 @@ export default function PipelineAppBar() {
         </Box>
 
         <Button
-          onClick={() => createNewPipeline()}
+          onClick={() => generatePipelinedata()}
           variant="contained"
           sx={{
             ml: 1,
@@ -279,7 +304,7 @@ export default function PipelineAppBar() {
             },
           }}
         >
-          CREATE INSTANCE
+          Export pipeline
         </Button>
 
         <Button
@@ -294,7 +319,7 @@ export default function PipelineAppBar() {
             },
           }}
         >
-          SAVE TEMPLATE
+          Deploy pipeline
         </Button>
       </Toolbar>
 

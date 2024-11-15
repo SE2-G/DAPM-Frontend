@@ -12,6 +12,7 @@ import PipelineComposer from "./routes/PipeLineComposer";
 import UserPage from "./routes/OverviewPage";
 import LoginPage from "./routes/LoginPage";
 import { loadState, saveState } from "./redux/browser-storage";
+import PipelineInstantiation from "./routes/PipeLineInstantiation";
 
 // Configure redux-persist
 const persistConfig = {
@@ -50,7 +51,11 @@ const router = createBrowserRouter([
 
   },
   {
-    path: "/pipeline",
+    path: "/pipelineInstantiation",
+    element: <PipelineInstantiation/>,
+  },
+  {
+    path: "/pipelineTemplate",
     element: <PipelineComposer/>,
   },
   {

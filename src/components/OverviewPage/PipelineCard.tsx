@@ -22,7 +22,7 @@ export default function MediaCard({ id, name, imgData }: PipelineCardProps) {
 
   const navigateToPipeline = () => {
     dispatch(setActivePipeline(id));
-    navigate('/pipeline');
+    navigate('/pipelineTemplate');
   }
 
   return (
