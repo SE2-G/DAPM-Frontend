@@ -66,16 +66,31 @@ export default function PipelineAppBar() {
   
   const createNewPipeline = () => {
     const templateFlowData = flowData;
-    
-    if(templateFlowData?.edges!=null&&templateFlowData.nodes!=null){
-      
-      dispatch(addNewPipeline({ id: `pipeline-${uuidv4()}`, flowData: templateFlowData }));
-      { navigate("/pipelineInstantiation") }
-      
+  
+    // 检查资源是否齐全
+    if (
+      templateFlowData?.edges != null &&
+      templateFlowData.nodes != null &&
+      templateFlowData.nodes.some((node: any) => node.type === "eventlog") &&
+      templateFlowData.nodes.some((node: any) => node.type === "petrinet") &&
+      templateFlowData.nodes.some((node: any) => node.type === "bpmn") &&
+      templateFlowData.nodes.some((node: any) => node.type === "miner") &&
+      templateFlowData.nodes.some((node: any) => node.type === "operator") 
+    ) {
+      dispatch(
+        addNewPipeline({ id: `pipeline-${uuidv4()}`, flowData: templateFlowData })
+      );
+      navigate("/pipelineInstantiation");
+    } else {
+      // 如果缺少资源，显示错误信息
+      setStatusMessage("Missing required resources in the pipeline.");
+      setStatusType("error");
+      setShowStatusBar(true);
     }
+  
     dispatch(showTemplateData(false));
-    
-  }
+  };
+  
 
   const generateJson = async () => {
     try {
