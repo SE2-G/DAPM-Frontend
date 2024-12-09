@@ -8,6 +8,7 @@ export const initialState: PipelineState = {
   activePipelineId: "",
   showStatusEnable: false,
   nodeStatus: 0,
+  showTemplateDataEnable: true,
 }
 
 const takeSnapshot = (state: PipelineState) => {
@@ -193,7 +194,10 @@ const pipelineSlice = createSlice({
     },
     setNodeStatus: (state, action) => {
       state.nodeStatus = action.payload;
-    }
+    },
+    showTemplateData: (state, action) => {
+      state.showTemplateDataEnable = action.payload;
+    },
     
   },
 })
@@ -225,7 +229,8 @@ export const {
   setNodes, 
   setEdges,
   toggleShowStatusEnable,
-  setNodeStatus
+  setNodeStatus,
+  showTemplateData
 } = pipelineSlice.actions
 
 export default pipelineSlice.reducer 

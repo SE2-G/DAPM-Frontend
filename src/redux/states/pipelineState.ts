@@ -6,6 +6,7 @@ export interface PipelineState {
   activePipelineId: string
   showStatusEnable: boolean
   nodeStatus: number
+  showTemplateDataEnable: boolean
 }
 
 export interface HistoryData {
