@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 import { TextField, Typography, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { userInfo, setAuthenticated } from '../../redux/slices/userSlice';
+import { fetchStatusLoop, getPath } from '../../services/backendAPI';
+import { useDispatch } from 'react-redux';
 
 export default function PersistentDrawerbox() {
     const [username, setUsername] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [error, setError] = useState<string | null>(null);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    dispatch(setAuthenticated(false))
 
     const boxStyle: React.CSSProperties = {
         width: '300px',
@@ -41,7 +47,7 @@ export default function PersistentDrawerbox() {
         setError(null);
 
         try {
-            const response = await fetch('http://localhost:5002/api/Authentication/login', {
+            const response = await fetch(getPath()+'/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -53,9 +59,25 @@ export default function PersistentDrawerbox() {
             });
 
             if (response.ok) {
-                const data = await response.json();
-                localStorage.setItem('token', data.token);
-                navigate('/userpage'); 
+                const jsonData = await response.json();
+                const data = await fetchStatusLoop(jsonData.ticketId as string);
+                
+                
+                localStorage.setItem('token', data.result.message.token);
+                console.log(data)
+                userInfo.roles = data.result.message.Roles;
+                userInfo.userName = data.result.message.UserName;
+                userInfo.fullName = data.result.message.FullName;
+                userInfo.token = data.result.message.Token;
+
+                if (data.result.succeeded){
+                    dispatch(setAuthenticated(true))
+
+                    navigate('/userpage'); 
+                } else{
+                    const errorMessage = await response.text();
+                    setError(errorMessage);
+                }
             } else {
                 const errorMessage = await response.text();
                 setError(errorMessage);
