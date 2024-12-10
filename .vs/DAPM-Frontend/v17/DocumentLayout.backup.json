@@ -1,0 +1,504 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\routes\\ProtectedRoute.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\routes\\ProtectedRoute.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\routes\\PipeLineComposer.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\routes\\PipeLineComposer.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\routes\\OverviewPage.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\routes\\OverviewPage.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\routes\\LoginPage.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\routes\\LoginPage.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\redux\\slices\\index.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\redux\\slices\\index.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\redux\\slices\\apiSlice.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\redux\\slices\\apiSlice.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\redux\\states\\pipelineState.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\redux\\states\\pipelineState.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\redux\\states\\apiState.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\redux\\states\\apiState.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\PipeLineComposer\\Nodes\\CustomNode.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\PipeLineComposer\\Nodes\\CustomNode.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\PipeLineComposer\\Edges\\DefaultEdge.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\PipeLineComposer\\Edges\\DefaultEdge.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\PipeLineComposer\\ConfigurationPages\\OrganizationConfiguration.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\PipeLineComposer\\ConfigurationPages\\OrganizationConfiguration.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\PipeLineComposer\\ConfigurationPages\\DataSinkConfiguration.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\PipeLineComposer\\ConfigurationPages\\DataSinkConfiguration.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\PipeLineComposer\\ConfigurationPages\\AlgorithmConfiguration.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\PipeLineComposer\\ConfigurationPages\\AlgorithmConfiguration.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\OverviewPage\\PipelineGrid.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\OverviewPage\\PipelineGrid.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\OverviewPage\\PipelineCard.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\OverviewPage\\PipelineCard.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\OverviewPage\\OrganizationSidebar.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\OverviewPage\\OrganizationSidebar.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\OverviewPage\\ImageGeneration\\OrganizationImageNode.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\OverviewPage\\ImageGeneration\\OrganizationImageNode.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\OverviewPage\\ImageGeneration\\FlowDiagram.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\OverviewPage\\ImageGeneration\\FlowDiagram.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\OverviewPage\\Buttons\\ResourceUploadButton.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\OverviewPage\\Buttons\\ResourceUploadButton.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\OverviewPage\\Buttons\\OperatorUploadButton.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\OverviewPage\\Buttons\\OperatorUploadButton.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\OverviewPage\\Buttons\\CreateRepositoryButton.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\OverviewPage\\Buttons\\CreateRepositoryButton.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\OverviewPage\\Buttons\\AddOrganizationButton.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\OverviewPage\\Buttons\\AddOrganizationButton.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\AdminPage\\AdminUserListPage.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\AdminPage\\AdminUserListPage.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\AdminPage\\AdminSidebar.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\AdminPage\\AdminSidebar.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\AdminPage\\AdminActivityLogPage.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\AdminPage\\AdminActivityLogPage.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\LoginPage\\LoginBox.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\LoginPage\\LoginBox.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\AdminPage\\AdminEditPage.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\AdminPage\\AdminEditPage.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\services\\backendAPI.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\services\\backendAPI.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProtectedRoute.tsx",
+              "DocumentMoniker": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\routes\\ProtectedRoute.tsx",
+              "RelativeDocumentMoniker": "src\\routes\\ProtectedRoute.tsx",
+              "ToolTip": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\routes\\ProtectedRoute.tsx",
+              "RelativeToolTip": "src\\routes\\ProtectedRoute.tsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-12-10T22:39:03.399Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PipeLineComposer.tsx",
+              "DocumentMoniker": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\routes\\PipeLineComposer.tsx",
+              "RelativeDocumentMoniker": "src\\routes\\PipeLineComposer.tsx",
+              "ToolTip": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\routes\\PipeLineComposer.tsx",
+              "RelativeToolTip": "src\\routes\\PipeLineComposer.tsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-12-10T22:39:01.966Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "OverviewPage.tsx",
+              "DocumentMoniker": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\routes\\OverviewPage.tsx",
+              "RelativeDocumentMoniker": "src\\routes\\OverviewPage.tsx",
+              "ToolTip": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\routes\\OverviewPage.tsx",
+              "RelativeToolTip": "src\\routes\\OverviewPage.tsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-12-10T22:39:00.825Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LoginPage.tsx",
+              "DocumentMoniker": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\routes\\LoginPage.tsx",
+              "RelativeDocumentMoniker": "src\\routes\\LoginPage.tsx",
+              "ToolTip": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\routes\\LoginPage.tsx",
+              "RelativeToolTip": "src\\routes\\LoginPage.tsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-12-10T22:38:58.731Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "index.ts",
+              "DocumentMoniker": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\redux\\slices\\index.ts",
+              "RelativeDocumentMoniker": "src\\redux\\slices\\index.ts",
+              "ToolTip": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\redux\\slices\\index.ts",
+              "RelativeToolTip": "src\\redux\\slices\\index.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-12-10T22:37:47.443Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "apiSlice.ts",
+              "DocumentMoniker": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\redux\\slices\\apiSlice.ts",
+              "RelativeDocumentMoniker": "src\\redux\\slices\\apiSlice.ts",
+              "ToolTip": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\redux\\slices\\apiSlice.ts",
+              "RelativeToolTip": "src\\redux\\slices\\apiSlice.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-12-10T22:37:46.176Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "pipelineState.ts",
+              "DocumentMoniker": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\redux\\states\\pipelineState.ts",
+              "RelativeDocumentMoniker": "src\\redux\\states\\pipelineState.ts",
+              "ToolTip": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\redux\\states\\pipelineState.ts",
+              "RelativeToolTip": "src\\redux\\states\\pipelineState.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-12-10T22:37:45.013Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "apiState.ts",
+              "DocumentMoniker": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\redux\\states\\apiState.ts",
+              "RelativeDocumentMoniker": "src\\redux\\states\\apiState.ts",
+              "ToolTip": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\redux\\states\\apiState.ts",
+              "RelativeToolTip": "src\\redux\\states\\apiState.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-12-10T22:37:43.942Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CustomNode.tsx",
+              "DocumentMoniker": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\PipeLineComposer\\Nodes\\CustomNode.tsx",
+              "RelativeDocumentMoniker": "src\\components\\PipeLineComposer\\Nodes\\CustomNode.tsx",
+              "ToolTip": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\PipeLineComposer\\Nodes\\CustomNode.tsx",
+              "RelativeToolTip": "src\\components\\PipeLineComposer\\Nodes\\CustomNode.tsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-12-10T22:37:38.412Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "DefaultEdge.tsx",
+              "DocumentMoniker": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\PipeLineComposer\\Edges\\DefaultEdge.tsx",
+              "RelativeDocumentMoniker": "src\\components\\PipeLineComposer\\Edges\\DefaultEdge.tsx",
+              "ToolTip": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\PipeLineComposer\\Edges\\DefaultEdge.tsx",
+              "RelativeToolTip": "src\\components\\PipeLineComposer\\Edges\\DefaultEdge.tsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-12-10T22:37:36.157Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "OrganizationConfiguration.tsx",
+              "DocumentMoniker": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\PipeLineComposer\\ConfigurationPages\\OrganizationConfiguration.tsx",
+              "RelativeDocumentMoniker": "src\\components\\PipeLineComposer\\ConfigurationPages\\OrganizationConfiguration.tsx",
+              "ToolTip": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\PipeLineComposer\\ConfigurationPages\\OrganizationConfiguration.tsx",
+              "RelativeToolTip": "src\\components\\PipeLineComposer\\ConfigurationPages\\OrganizationConfiguration.tsx",
+              "ViewState": "AgIAABAAAAAAAAAAAAAzwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-12-10T22:37:28.589Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "DataSinkConfiguration.tsx",
+              "DocumentMoniker": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\PipeLineComposer\\ConfigurationPages\\DataSinkConfiguration.tsx",
+              "RelativeDocumentMoniker": "src\\components\\PipeLineComposer\\ConfigurationPages\\DataSinkConfiguration.tsx",
+              "ToolTip": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\PipeLineComposer\\ConfigurationPages\\DataSinkConfiguration.tsx",
+              "RelativeToolTip": "src\\components\\PipeLineComposer\\ConfigurationPages\\DataSinkConfiguration.tsx",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-12-10T22:37:25.128Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "AlgorithmConfiguration.tsx",
+              "DocumentMoniker": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\PipeLineComposer\\ConfigurationPages\\AlgorithmConfiguration.tsx",
+              "RelativeDocumentMoniker": "src\\components\\PipeLineComposer\\ConfigurationPages\\AlgorithmConfiguration.tsx",
+              "ToolTip": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\PipeLineComposer\\ConfigurationPages\\AlgorithmConfiguration.tsx",
+              "RelativeToolTip": "src\\components\\PipeLineComposer\\ConfigurationPages\\AlgorithmConfiguration.tsx",
+              "ViewState": "AgIAAGcAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-12-10T22:37:10.891Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "PipelineGrid.tsx",
+              "DocumentMoniker": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\OverviewPage\\PipelineGrid.tsx",
+              "RelativeDocumentMoniker": "src\\components\\OverviewPage\\PipelineGrid.tsx",
+              "ToolTip": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\OverviewPage\\PipelineGrid.tsx",
+              "RelativeToolTip": "src\\components\\OverviewPage\\PipelineGrid.tsx",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-12-10T22:37:05.136Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "PipelineCard.tsx",
+              "DocumentMoniker": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\OverviewPage\\PipelineCard.tsx",
+              "RelativeDocumentMoniker": "src\\components\\OverviewPage\\PipelineCard.tsx",
+              "ToolTip": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\OverviewPage\\PipelineCard.tsx",
+              "RelativeToolTip": "src\\components\\OverviewPage\\PipelineCard.tsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-12-10T22:37:02.466Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "OrganizationSidebar.tsx",
+              "DocumentMoniker": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\OverviewPage\\OrganizationSidebar.tsx",
+              "RelativeDocumentMoniker": "src\\components\\OverviewPage\\OrganizationSidebar.tsx",
+              "ToolTip": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\OverviewPage\\OrganizationSidebar.tsx",
+              "RelativeToolTip": "src\\components\\OverviewPage\\OrganizationSidebar.tsx",
+              "ViewState": "AgIAADUAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-12-10T22:36:58.866Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "OrganizationImageNode.tsx",
+              "DocumentMoniker": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\OverviewPage\\ImageGeneration\\OrganizationImageNode.tsx",
+              "RelativeDocumentMoniker": "src\\components\\OverviewPage\\ImageGeneration\\OrganizationImageNode.tsx",
+              "ToolTip": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\OverviewPage\\ImageGeneration\\OrganizationImageNode.tsx",
+              "RelativeToolTip": "src\\components\\OverviewPage\\ImageGeneration\\OrganizationImageNode.tsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-12-10T22:36:57.537Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "FlowDiagram.tsx",
+              "DocumentMoniker": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\OverviewPage\\ImageGeneration\\FlowDiagram.tsx",
+              "RelativeDocumentMoniker": "src\\components\\OverviewPage\\ImageGeneration\\FlowDiagram.tsx",
+              "ToolTip": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\OverviewPage\\ImageGeneration\\FlowDiagram.tsx",
+              "RelativeToolTip": "src\\components\\OverviewPage\\ImageGeneration\\FlowDiagram.tsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-12-10T22:36:55.31Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "ResourceUploadButton.tsx",
+              "DocumentMoniker": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\OverviewPage\\Buttons\\ResourceUploadButton.tsx",
+              "RelativeDocumentMoniker": "src\\components\\OverviewPage\\Buttons\\ResourceUploadButton.tsx",
+              "ToolTip": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\OverviewPage\\Buttons\\ResourceUploadButton.tsx",
+              "RelativeToolTip": "src\\components\\OverviewPage\\Buttons\\ResourceUploadButton.tsx",
+              "ViewState": "AgIAADgAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-12-10T22:36:51.03Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "OperatorUploadButton.tsx",
+              "DocumentMoniker": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\OverviewPage\\Buttons\\OperatorUploadButton.tsx",
+              "RelativeDocumentMoniker": "src\\components\\OverviewPage\\Buttons\\OperatorUploadButton.tsx",
+              "ToolTip": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\OverviewPage\\Buttons\\OperatorUploadButton.tsx",
+              "RelativeToolTip": "src\\components\\OverviewPage\\Buttons\\OperatorUploadButton.tsx",
+              "ViewState": "AgIAADUAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-12-10T22:36:46.851Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "CreateRepositoryButton.tsx",
+              "DocumentMoniker": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\OverviewPage\\Buttons\\CreateRepositoryButton.tsx",
+              "RelativeDocumentMoniker": "src\\components\\OverviewPage\\Buttons\\CreateRepositoryButton.tsx",
+              "ToolTip": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\OverviewPage\\Buttons\\CreateRepositoryButton.tsx",
+              "RelativeToolTip": "src\\components\\OverviewPage\\Buttons\\CreateRepositoryButton.tsx",
+              "ViewState": "AgIAACAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-12-10T22:36:43.767Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "AddOrganizationButton.tsx",
+              "DocumentMoniker": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\OverviewPage\\Buttons\\AddOrganizationButton.tsx",
+              "RelativeDocumentMoniker": "src\\components\\OverviewPage\\Buttons\\AddOrganizationButton.tsx",
+              "ToolTip": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\OverviewPage\\Buttons\\AddOrganizationButton.tsx",
+              "RelativeToolTip": "src\\components\\OverviewPage\\Buttons\\AddOrganizationButton.tsx",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-12-10T22:36:39.157Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "AdminSidebar.tsx",
+              "DocumentMoniker": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\AdminPage\\AdminSidebar.tsx",
+              "RelativeDocumentMoniker": "src\\components\\AdminPage\\AdminSidebar.tsx",
+              "ToolTip": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\AdminPage\\AdminSidebar.tsx",
+              "RelativeToolTip": "src\\components\\AdminPage\\AdminSidebar.tsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-12-10T22:35:59.014Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "AdminUserListPage.tsx",
+              "DocumentMoniker": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\AdminPage\\AdminUserListPage.tsx",
+              "RelativeDocumentMoniker": "src\\components\\AdminPage\\AdminUserListPage.tsx",
+              "ToolTip": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\AdminPage\\AdminUserListPage.tsx",
+              "RelativeToolTip": "src\\components\\AdminPage\\AdminUserListPage.tsx",
+              "ViewState": "AgIAACYAAAAAAAAAAAAAwAgAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-12-10T22:35:41.983Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "AdminActivityLogPage.tsx",
+              "DocumentMoniker": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\AdminPage\\AdminActivityLogPage.tsx",
+              "RelativeDocumentMoniker": "src\\components\\AdminPage\\AdminActivityLogPage.tsx",
+              "ToolTip": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\AdminPage\\AdminActivityLogPage.tsx",
+              "RelativeToolTip": "src\\components\\AdminPage\\AdminActivityLogPage.tsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-12-10T22:35:37.06Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "AdminEditPage.tsx",
+              "DocumentMoniker": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\AdminPage\\AdminEditPage.tsx",
+              "RelativeDocumentMoniker": "src\\components\\AdminPage\\AdminEditPage.tsx",
+              "ToolTip": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\AdminPage\\AdminEditPage.tsx",
+              "RelativeToolTip": "src\\components\\AdminPage\\AdminEditPage.tsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-12-10T22:17:09.135Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "LoginBox.tsx",
+              "DocumentMoniker": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\LoginPage\\LoginBox.tsx",
+              "RelativeDocumentMoniker": "src\\components\\LoginPage\\LoginBox.tsx",
+              "ToolTip": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\components\\LoginPage\\LoginBox.tsx",
+              "RelativeToolTip": "src\\components\\LoginPage\\LoginBox.tsx",
+              "ViewState": "AgIAADQAAAAAAAAAAAAQwFAAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-12-10T01:19:16.703Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "backendAPI.tsx",
+              "DocumentMoniker": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\services\\backendAPI.tsx",
+              "RelativeDocumentMoniker": "src\\services\\backendAPI.tsx",
+              "ToolTip": "C:\\Users\\SouarRamziMohammadAl\\Desktop\\DTU\\Software Engineering 2\\DAPM-Frontend\\src\\services\\backendAPI.tsx",
+              "RelativeToolTip": "src\\services\\backendAPI.tsx",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAACUAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-11-28T17:14:43.64Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

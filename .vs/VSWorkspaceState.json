@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\components",
+    "\\src\\components\\AdminPage",
+    "\\src\\services"
+  ],
+  "SelectedNode": "\\src\\services\\backendAPI.tsx",
+  "PreviewInSolutionExplorer": false
+}
