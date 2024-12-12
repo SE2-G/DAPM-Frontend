@@ -15,6 +15,7 @@ import { toPng } from "html-to-image";
 import { getNodesBounds, getViewportForBounds } from "reactflow";
 import { v4 as uuidv4 } from "uuid";
 import React, { useState } from "react";
+import { userInfo } from '../../redux/slices/userSlice';
 
 // Styled Search Components
 const Search = styled("div")(({ theme }) => ({
@@ -162,7 +163,7 @@ export default function AutoGrid() {
           gap: "16px", // Adds spacing between elements
         }}
       >
-        <Button
+        {userInfo.roles.includes("Admin") && (<Button
           variant="contained"
           startIcon={<AddIcon />}
           onClick={createNewPipeline}
@@ -172,7 +173,7 @@ export default function AutoGrid() {
           }}
         >
           Create New
-        </Button>
+        </Button>)}
 
         <Search>
           <SearchIconWrapper>
