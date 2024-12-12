@@ -518,7 +518,7 @@ export default function PipelineAppBar() {
             variant="contained"
             sx={{
               backgroundColor: "#555555",
-              color: "red",
+              color: "yellow",
               fontWeight: "bold",
               minWidth: "130px",
               "&:hover": {
