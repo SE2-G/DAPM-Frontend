@@ -17,6 +17,12 @@ import { getNodesBounds, getViewportForBounds } from 'reactflow';
 import { v4 as uuidv4 } from 'uuid';
 import { useState } from 'react';
 import { PipelineState, NodeState, EdgeData, NodeData } from '../../redux/states/pipelineState';
+import {
+  DataSourceInstantiationData,
+  DataSinkInstantiationData,
+  OperatorInstantiationData,
+  OrganizationInstantiationData,
+} from '../../redux/states/pipelineState';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -46,26 +52,40 @@ export default function AutoGrid() {
   //   return pipeline.nodes.every((node: { type: string; instantiationData?: any }) => node.type === 'Template' && !node.instantiationData) &&
   //          pipeline.edges.every((edge: { type: string; instantiationData?: any }) => edge.type === 'Template' && !edge.instantiationData);
   // };
-
-  const isTemplate = (pipeline: NodeState) => {
-    // 检查所有节点是否为模板节点
-    const allNodesAreTemplates = pipeline.nodes.every((node: Node<NodeData>) => {
-      // 节点类型为模板且 instantiationData 为 undefined 或是一个空对象
-      const instantiationDataEmpty =
-        !node.data.instantiationData ||
-        Object.keys(node.data.instantiationData).length === 0;
+  const isTemplate = (pipeline: NodeState): boolean => {
+    const isInstantiationDataEmpty = (data: NodeData): boolean => {
+      const instantiationData = data.instantiationData;
   
-      return node.data.templateData && instantiationDataEmpty;
+      if ('resource' in instantiationData) {
+
+        return !(instantiationData as DataSourceInstantiationData).resource;
+      } else if ('repository' in instantiationData) {
+
+        const instData = instantiationData as DataSinkInstantiationData;
+        return !instData.repository && !instData.name;
+      } else if ('algorithm' in instantiationData) {
+
+        return !(instantiationData as OperatorInstantiationData).algorithm;
+      }
+  
+      if ('organization' in instantiationData) {
+        return true;
+      }
+
+      return !instantiationData || Object.keys(instantiationData).length === 0;
+    };
+  
+    const allNodesAreTemplates = pipeline.nodes.every((node: Node<NodeData>) => {
+      return node.data.templateData && isInstantiationDataEmpty(node.data);
     });
   
-    // 检查所有边是否为模板边
     const allEdgesAreTemplates = pipeline.edges.every((edge: Edge<EdgeData>) => {
-      // 边的 filename 属性未定义或为空
       return !edge.data?.filename;
     });
   
     return allNodesAreTemplates && allEdgesAreTemplates;
   };
+  
   
 
   
