@@ -85,7 +85,7 @@ export default function AutoGrid() {
         <Typography variant="h6" sx={{ marginBottom: 2 }}>
           No pipelines available. Create a new one!
         </Typography>
-        <Button
+        {userInfo.roles.includes("Admin") &&(<Button
           variant="contained"
           startIcon={<AddIcon />}
           onClick={createNewPipeline}
@@ -94,8 +94,8 @@ export default function AutoGrid() {
             "&:hover": { backgroundColor: "#eee" },
           }}
         >
-          Create New Pipeline
-        </Button>
+          Create New Template
+        </Button>)}
       </Box>
     );
   }
