@@ -283,7 +283,6 @@ export default function PipelineAppBar() {
         </Button>
 
         <Button
-          onClick={() => generateJson()}
           variant="contained"
           sx={{
             backgroundColor: '#555555', 
@@ -298,64 +297,8 @@ export default function PipelineAppBar() {
         </Button>
       </Toolbar>
 
-      {showStatusBar && (
-        <Box
-          sx={{
-            position: 'fixed',
-            bottom: 0,
-            width: '100%',
-            height: '60px',
-            backgroundColor:
-              statusType === 'error' ? '#f44336' : statusType === 'success' ? '#4caf50' : '#555555', 
-            color: 'white',
-            overflow: 'hidden',
-            zIndex: 1300,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            opacity: showStatusBar ? 1 : 0,
-            transition: 'opacity 0.5s ease-in-out',
-          }}
-        >
-          <Box
-            sx={{
-              position: 'absolute',
-              bottom: 0,
-              left: 0,
-              height: '5px',
-              backgroundColor: 'rgba(255, 255, 255, 0.7)',
-              width: `${progress}%`,
-              transition: 'width 0.3s ease-in-out',
-            }}
-          />
-
-          <Box
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              zIndex: 1,
-            }}
-          >
-            {getStatusIcon()}
-            <Typography sx={{ fontWeight: 'bold' }}>{statusMessage}</Typography>
-          </Box>
-
-          <IconButton
-            onClick={() => {
-              setShowStatusBar(false);
-              setStatusMessage('');
-              setProgress(0);
-            }}
-            sx={{
-              position: 'absolute',
-              right: '10px',
-              color: 'white',
-            }}
-          >
-            <CloseIcon />
-          </IconButton>
-        </Box>
-      )}
+      
+      
     </AppBar>
   );
 }
