@@ -80,6 +80,7 @@ export default function PersistentDrawerbox({refreshKey} : DrawerInterface) {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${userInfo.token}`,
                 },
                 body: JSON.stringify({
                     userName: username,

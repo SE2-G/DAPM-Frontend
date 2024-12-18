@@ -42,12 +42,11 @@ export default function PersistentDrawerbox() {
         borderRadius: '5px',
         bottom: '4%',
     };
-
     const handleLogin = async () => {
         setError(null);
 
         try {
-            const response = await fetch(getPath()+'/auth/login', {
+            const response = await fetch(getPath() + '/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -60,21 +59,29 @@ export default function PersistentDrawerbox() {
 
             if (response.ok) {
                 const jsonData = await response.json();
+                console.log('Login Response:', jsonData);
+
                 const data = await fetchStatusLoop(jsonData.ticketId as string);
-                
-                
-                localStorage.setItem('token', data.result.message.token);
-                console.log(data)
+                console.log('Status Loop Response:', data);
+
+                const token = data.result.message.token || data.result.message.Token;
+                if (!token) {
+                    throw new Error('Token is missing from the response');
+                }
+
+                localStorage.setItem('token', token);
+                console.log('Token Saved:', token);
+
+                // Set other user info
                 userInfo.roles = data.result.message.Roles;
                 userInfo.userName = data.result.message.UserName;
                 userInfo.fullName = data.result.message.FullName;
-                userInfo.token = data.result.message.Token;
+                userInfo.token = token;
 
-                if (data.result.succeeded){
-                    dispatch(setAuthenticated(true))
-
-                    navigate('/userpage'); 
-                } else{
+                if (data.result.succeeded) {
+                    dispatch(setAuthenticated(true));
+                    navigate('/userpage');
+                } else {
                     const errorMessage = await response.text();
                     setError(errorMessage);
                 }
@@ -83,9 +90,60 @@ export default function PersistentDrawerbox() {
                 setError(errorMessage);
             }
         } catch (err) {
+            console.error('Login Error:', err);
             setError('Login failed. Please try again.');
         }
     };
+
+
+    //const handleLogin = async () => {
+    //    setError(null);
+
+    //    try {
+    //        const response = await fetch(getPath()+'/auth/login', {
+    //            method: 'POST',
+    //            headers: {
+    //                'Content-Type': 'application/json',
+    //            },
+    //            body: JSON.stringify({
+    //                userName: username,
+    //                password: password,
+    //            }),
+    //        });
+
+    //        if (response.ok) {
+    //            const jsonData = await response.json();
+    //            const data = await fetchStatusLoop(jsonData.ticketId as string);
+                
+                
+    //            localStorage.setItem('token', data.result.message.token);
+    //            if (!data.result.message.token) {
+    //                console.error('Token is undefined or invalid in the HandleLogin');
+    //            }
+    //            console.log(data)
+    //            userInfo.roles = data.result.message.Roles;
+    //            userInfo.userName = data.result.message.UserName;
+    //            userInfo.fullName = data.result.message.FullName;
+    //            userInfo.token = data.result.message.Token;
+
+    //            if (data.result.succeeded){
+    //                dispatch(setAuthenticated(true))
+
+    //                navigate('/userpage'); 
+    //            } else{
+    //                const errorMessage = await response.text();
+    //                setError(errorMessage);
+    //            }
+    //        } else {
+    //            const errorMessage = await response.text();
+    //            setError(errorMessage);
+
+    //        }
+    //    } catch (err) {
+    //        setError('Login failed. Please try again.');
+    //    }
+
+    //};
     
     return (
         <div style={boxStyle}>

@@ -14,6 +14,7 @@ import UserPage from "./routes/OverviewPage";
 import LoginPage from "./routes/LoginPage";
 import {AdminEditRoute, AdminListRoute} from "./routes/AdminPageRoute";
 import { loadState, saveState } from "./redux/browser-storage";
+import AdminActivityLogPage from "./components/AdminPage/AdminActivityLogPage";
 import PipelineInstantiation from "./routes/PipeLineInstantiation";
 
 // Configure redux-persist
@@ -90,8 +91,17 @@ const router = createBrowserRouter([
         <UserPage/>
       </ProtectedRoute>
       ),
-  }
+  },
+  {
+    path: "/adminactivitylogpage", // Add the route here
+    element: (
+        <ProtectedRoute>
+            <AdminActivityLogPage />
+        </ProtectedRoute>
+    ),
+},
 ]);
+
 
 export default function App() {
   return (
