@@ -4,7 +4,7 @@ import { adminInfo, User, userInfo } from '../redux/slices/userSlice';
 
 const vmPath = `se2-g.compute.dtu.dk:5000`
 const localPath = `localhost:5000`
-const path = localPath
+const path = vmPath
 
 export function getPath() {
     return `http://`+path
