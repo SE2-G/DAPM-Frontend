@@ -84,18 +84,6 @@ export default function PersistentDrawerRight({ selectableProp }: ConfigurationS
       {edge && <EdgeConfiguration edgeProp={selectableProp as Edge} />}
 
 
-      {/*<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-        {nodeStatus === 0 ? (
-          <HourglassEmptyIcon sx={{ fontSize: 50, color: 'grey' }} /> // 未开始
-        ) : nodeStatus === 1 ? (
-          <CircularProgress sx={{ color: 'skyblue' }} /> // 运行中
-        ) : nodeStatus === 2 ? (
-          <CheckCircleIcon sx={{ fontSize: 50, color: 'green' }} /> // 已完成
-        ) : (
-          <Typography sx={{ color: 'red' }}>Unknown Status</Typography> // 未知状态
-        )}
-      </div>*/}
-
     {showStatusEnable && (
       <Box display="flex" justifyContent="center" alignItems="center" height="100%">
         {nodeStatus === 0 ? (

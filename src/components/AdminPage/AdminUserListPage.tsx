@@ -48,7 +48,7 @@ export default function PersistentDrawerbox() {
     }, []);
 
     return (
-        <Box display="flex" flexDirection="row" gap={2} margin={'15px'}>
+        <Box display="flex" flexDirection="column" gap={2} margin={'15px'}>
             {userList.map((user, index) => (
                 <ButtonBase 
                     key={user.Id} 
@@ -61,11 +61,34 @@ export default function PersistentDrawerbox() {
                         padding: 2, 
                         border: '1px solid gray', 
                         borderRadius: 2, 
-                        width: '150px', 
+                        width: '1260px',
+                        height: '50px',  
                         textAlign: 'center' 
                     }}
                 >
-                    <Typography variant="h6" color={'white'}>{user.FullName}</Typography>
+                    <Box display="flex" width="100%" alignItems="center">
+                <Typography
+                    variant="h6"
+                    color="white"
+                    sx={{ flex: 1, textAlign: 'left' }}
+                >
+                    {user.UserName}
+                </Typography>
+                <Typography
+                    variant="h6"
+                    color="white"
+                    sx={{ flex: 1, textAlign: 'center', width: '200px' }}
+                >
+                    {user.FullName}
+                </Typography>
+                <Typography
+                    variant="h6"
+                    color="white"
+                    sx={{ flex: 1, textAlign: 'right' }}
+                >
+                    {user.Roles.join(', ')}
+                </Typography>
+            </Box>
                 </ButtonBase>
             ))}
         </Box>

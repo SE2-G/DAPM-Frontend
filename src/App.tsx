@@ -15,6 +15,7 @@ import LoginPage from "./routes/LoginPage";
 import {AdminEditRoute, AdminListRoute} from "./routes/AdminPageRoute";
 import { loadState, saveState } from "./redux/browser-storage";
 import AdminActivityLogPage from "./components/AdminPage/AdminActivityLogPage";
+import PipelineInstantiation from "./routes/PipeLineInstantiation";
 
 // Configure redux-persist
 const persistConfig = {
@@ -47,50 +48,58 @@ export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
 
 const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <LoginPage />,
-    },
-    {
-        path: "/pipeline",
-        element: (
-            <ProtectedRoute>
-                <PipelineComposer />
-            </ProtectedRoute>
-        ),
-    },
-    {
-        path: "/admineditpage",
-        element: (
-            <ProtectedRoute>
-                <AdminEditRoute />
-            </ProtectedRoute>
-        ),
-    },
-    {
-        path: "/adminlistpage",
-        element: (
-            <ProtectedRoute>
-                <AdminListRoute />
-            </ProtectedRoute>
-        ),
-    },
-    {
-        path: "/userpage",
-        element: (
-            <ProtectedRoute>
-                <UserPage />
-            </ProtectedRoute>
-        ),
-    },
-    {
-        path: "/adminactivitylogpage", // Add the route here
-        element: (
-            <ProtectedRoute>
-                <AdminActivityLogPage />
-            </ProtectedRoute>
-        ),
-    },
+  {
+    path: "/",
+    element: <LoginPage/>,
+  },
+  {
+    path: "/pipelineInstantiation",
+    element: (
+      <ProtectedRoute>
+        <PipelineInstantiation/>
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/pipelineTemplate",
+    element: (
+      <ProtectedRoute>
+        <PipelineComposer/>
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/admineditpage",
+    element: (
+      <ProtectedRoute>
+        <AdminEditRoute/>
+      </ProtectedRoute>
+      ),
+  },
+  {
+    path: "/adminlistpage",
+    element: (
+      <ProtectedRoute>
+        <AdminListRoute/>
+      </ProtectedRoute>
+      ),
+  },
+  {
+    path: "/userpage",
+    element: (
+      <ProtectedRoute>
+        <UserPage/>
+      </ProtectedRoute>
+      ),
+  },
+  {
+    path: "/adminactivitylogpage", // Add the route here
+    element: (
+        <ProtectedRoute>
+            <AdminActivityLogPage />
+        </ProtectedRoute>
+    ),
+},
 ]);
 
 

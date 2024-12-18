@@ -277,7 +277,7 @@ export default function PersistentDrawerbox({refreshKey} : DrawerInterface) {
                 <List>
                     {roles.map((role, index) => (
                         <ListItem key={index} disablePadding>
-                            <ListItemButton onClick={() => handleRemoveRole(role)}>
+                            <ListItemButton onClick={() => id != 1 && handleRemoveRole(role)}>
                                 <ListItemText primary={role} sx={{ color: 'white', textAlign: 'center' }} />
                             </ListItemButton>
                         </ListItem>
