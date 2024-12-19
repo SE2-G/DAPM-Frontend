@@ -1,3 +1,5 @@
+// Author: s224768
+
 import React, { useState } from 'react';
 import { TextField, Typography, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
@@ -14,6 +16,7 @@ export default function PersistentDrawerbox() {
 
     dispatch(setAuthenticated(false))
 
+    //Define the styles of the UI
     const boxStyle: React.CSSProperties = {
         width: '300px',
         height: '350px',
@@ -42,6 +45,8 @@ export default function PersistentDrawerbox() {
         borderRadius: '5px',
         bottom: '4%',
     };
+
+    // Handle the login of the user, to check if the user exists in the database
     const handleLogin = async () => {
         setError(null);
 
@@ -95,61 +100,14 @@ export default function PersistentDrawerbox() {
         }
     };
 
-
-    //const handleLogin = async () => {
-    //    setError(null);
-
-    //    try {
-    //        const response = await fetch(getPath()+'/auth/login', {
-    //            method: 'POST',
-    //            headers: {
-    //                'Content-Type': 'application/json',
-    //            },
-    //            body: JSON.stringify({
-    //                userName: username,
-    //                password: password,
-    //            }),
-    //        });
-
-    //        if (response.ok) {
-    //            const jsonData = await response.json();
-    //            const data = await fetchStatusLoop(jsonData.ticketId as string);
-                
-                
-    //            localStorage.setItem('token', data.result.message.token);
-    //            if (!data.result.message.token) {
-    //                console.error('Token is undefined or invalid in the HandleLogin');
-    //            }
-    //            console.log(data)
-    //            userInfo.roles = data.result.message.Roles;
-    //            userInfo.userName = data.result.message.UserName;
-    //            userInfo.fullName = data.result.message.FullName;
-    //            userInfo.token = data.result.message.Token;
-
-    //            if (data.result.succeeded){
-    //                dispatch(setAuthenticated(true))
-
-    //                navigate('/userpage'); 
-    //            } else{
-    //                const errorMessage = await response.text();
-    //                setError(errorMessage);
-    //            }
-    //        } else {
-    //            const errorMessage = await response.text();
-    //            setError(errorMessage);
-
-    //        }
-    //    } catch (err) {
-    //        setError('Login failed. Please try again.');
-    //    }
-
-    //};
-    
+    //UI of the login page
     return (
         <div style={boxStyle}>
             <Typography variant="h6" component="div" color={"rgb(255,255,255)"}>
                 Enter Your Details
             </Typography>
+
+            {/* Textfields of the login page */}
             <TextField
                 label="Username"
                 variant="outlined"
@@ -165,6 +123,8 @@ export default function PersistentDrawerbox() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
             />
+
+            {/* Button for the login */}
             <Button variant="contained" color="primary" style={buttonStyle} onClick={handleLogin}>
                 Login
             </Button>

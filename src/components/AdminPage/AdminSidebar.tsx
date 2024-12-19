@@ -1,3 +1,5 @@
+// Author: s224768
+
 import { styled } from '@mui/material/styles';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Drawer from '@mui/material/Drawer';
@@ -22,11 +24,8 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'center',
 }));
 
-interface DrawerInterface {
-    setRefreshKey: React.Dispatch<React.SetStateAction<number>>
-}
-
-export default function PersistentDrawerbox({setRefreshKey}: DrawerInterface) {
+// draw UI of the sidebar
+export default function PersistentDrawerbox() {
     const navigate = useNavigate();
 
 return (
@@ -47,9 +46,9 @@ return (
     }}
     variant="permanent"
     anchor="left"
-    
     >
-
+    
+    {/*Back button to the userpage*/}
     <Button 
         sx={{ 
             position: 'fixed',
@@ -63,12 +62,14 @@ return (
         <ArrowBackIcon />
     </Button>
 
+    {/*Sidebar header*/}
     <DrawerHeader>
         <Typography variant="h5">Admin page</Typography>
     </DrawerHeader>
     
     <Divider />
 
+    {/*Creat the list of buttons for the navigation*/}
     <List>
         <ListItem disablePadding>
         <ListItemButton> 
@@ -77,7 +78,7 @@ return (
                 onClick={
                     () => {
                         adminInfo.userRegisterActive = true
-                        setRefreshKey((prev) => prev + 1)
+                        
                         navigate('/admineditpage')
                     }
                 }
@@ -97,6 +98,19 @@ return (
             />
         </ListItemButton>
             </ListItem>
+        <ListItem disablePadding>
+        <ListItemButton>
+            <ListItemText 
+                primary="Roles"
+                onClick={
+                    async () => {
+                        adminInfo.userRegisterActive = false
+                        navigate('/adminrolepage')
+                    }
+                }
+            />
+        </ListItemButton>
+        </ListItem>
             <ListItem disablePadding>
                 <ListItemButton>
                     <ListItemText
