@@ -12,7 +12,7 @@ import { RouterProvider, createBrowserRouter, createHashRouter } from "react-rou
 import PipelineComposer from "./routes/PipeLineComposer";
 import UserPage from "./routes/OverviewPage";
 import LoginPage from "./routes/LoginPage";
-import {AdminEditRoute, AdminListRoute} from "./routes/AdminPageRoute";
+import {AdminEditRoute, AdminListRoute, AdminRoleRoute} from "./routes/AdminPageRoute";
 import { loadState, saveState } from "./redux/browser-storage";
 
 // Configure redux-persist
@@ -46,7 +46,7 @@ export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
 
 
-
+// Author: s224768
 const router = createBrowserRouter([
   {
     path: "/",
@@ -74,6 +74,14 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute>
         <AdminListRoute/>
+      </ProtectedRoute>
+      ),
+  },
+  {
+    path: "/adminrolepage",
+    element: (
+      <ProtectedRoute>
+        <AdminRoleRoute/>
       </ProtectedRoute>
       ),
   },

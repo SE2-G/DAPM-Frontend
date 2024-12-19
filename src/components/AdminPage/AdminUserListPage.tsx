@@ -1,9 +1,12 @@
+// Author: s224768
+
 import React, { useEffect, useState } from 'react';
 import { Box, Typography, ButtonBase } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { adminInfo, User, userInfo } from '../../redux/slices/userSlice';
-import { fetchMessageLoop, getPath } from '../../services/backendAPI';
+import { fetchStatusLoop, getPath } from '../../services/backendAPI';
 
+//Get the list of all users from the database
 const handleUserList = async () => {
     try {
         const response = await fetch(getPath() + '/auth/GetUsers', {
@@ -20,7 +23,8 @@ const handleUserList = async () => {
 
         if (response.ok) {
             const jsonData = await response.json();
-            const data = await fetchMessageLoop(jsonData.ticketId as string);
+            const data = await fetchStatusLoop(jsonData.ticketId as string);
+
             return data;
         } else {
             console.error('Failed to fetch:', response.status, response.statusText);
@@ -38,24 +42,35 @@ export default function PersistentDrawerbox() {
     const [userList, setUserList] = useState<User[]>([]);
     console.log(userList);
 
+    //Update the page
     useEffect(() => {
         const fetchUserData = async () => {
-            const users = await handleUserList();
-            setUserList(users);
+            const data = await handleUserList();
+            try{
+                if (data.result.succeeded){
+                    setUserList(data.result.message);
+                }
+            } catch(error){
+                return 0;
+            }
         };
-
-        fetchUserData();
+        
+        fetchUserData(); // get the userlist again
     }, []);
-
+    
+    // UI for the user list page
     return (
         <Box display="flex" flexDirection="column" gap={2} margin={'15px'}>
-            {userList.map((user, index) => (
+            {/*Loop through a map of the user to draw them all*/}
+            {userList.map((user) => (
+
+                // if pressed on the user, then navigate to the edit user page
                 <ButtonBase 
                     key={user.Id} 
                     onClick={() => {
                         adminInfo.userRegisterActive = false;
                         adminInfo.userSelected = user;
-                        navigate('/admineditpage'); 
+                        navigate('/admineditpage'); // navigate to edit user page
                     }}
                     sx={{ 
                         padding: 2, 
@@ -67,6 +82,7 @@ export default function PersistentDrawerbox() {
                     }}
                 >
                     <Box display="flex" width="100%" alignItems="center">
+                {/* Write the username, fullname and roles of the users in the list */}
                 <Typography
                     variant="h6"
                     color="white"

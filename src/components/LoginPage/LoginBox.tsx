@@ -1,3 +1,5 @@
+// Author: s224768
+
 import React, { useState } from 'react';
 import { TextField, Typography, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
@@ -14,6 +16,7 @@ export default function PersistentDrawerbox() {
 
     dispatch(setAuthenticated(false))
 
+    //Define the styles of the UI
     const boxStyle: React.CSSProperties = {
         width: '300px',
         height: '350px',
@@ -43,6 +46,7 @@ export default function PersistentDrawerbox() {
         bottom: '4%',
     };
 
+    // Handle the login of the user, to check if the user exists in the database
     const handleLogin = async () => {
         setError(null);
 
@@ -87,11 +91,14 @@ export default function PersistentDrawerbox() {
         }
     };
 
+    //UI of the login page
     return (
         <div style={boxStyle}>
             <Typography variant="h6" component="div" color={"rgb(255,255,255)"}>
                 Enter Your Details
             </Typography>
+
+            {/* Textfields of the login page */}
             <TextField
                 label="Username"
                 variant="outlined"
@@ -107,6 +114,8 @@ export default function PersistentDrawerbox() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
             />
+
+            {/* Button for the login */}
             <Button variant="contained" color="primary" style={buttonStyle} onClick={handleLogin}>
                 Login
             </Button>

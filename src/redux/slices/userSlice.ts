@@ -1,5 +1,8 @@
+// Author: s224768
+
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+// Variable information on the users in the adminpage
 interface UserInfo {
     fullName: string;
     roles: string[];
@@ -7,6 +10,7 @@ interface UserInfo {
     token: string;
 }
 
+//The info on the logged in user
 export interface User {
     Id: number;
     FullName: string;
@@ -18,19 +22,22 @@ export interface User {
     Token: string | null;
 }
 
+//the information on the users in the adminpage
 export const userInfo : UserInfo = {
     fullName: "",
     roles: [],
     userName: "",
     token: ""
 }
-  
+
+// the variable information on the admin page
 export const adminInfo = {
     userRegisterActive: true,
     userList: [],
     userSelected: null as User | null,
 }
 
+//Authentication for security from the login page, so you can't enter without login
 export interface AuthState {
     isAuthenticated: boolean;
   }
