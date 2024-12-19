@@ -192,14 +192,14 @@ export default function PersistentDrawerLeft() {
               <Typography variant="h6" sx={{ marginBlock: "0rem", fontSize: "25px", textAlign: "center" }}>
                 {organization.name}
               </Typography>
-              <Button
+              {userInfo.roles.includes("Admin") && (<Button
                   variant="outlined"
                   size="small"
                   sx={{ marginLeft: "auto" }}
                   onClick={() => handleOpenDialog(organization.id)}
                 >
                   Invite User
-                </Button>
+                </Button>)}
             </ListItem>
 
             {/* Dialog for user selection */}

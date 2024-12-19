@@ -71,10 +71,10 @@ export default function MediaCard({ id, name, imgData }: PipelineCardProps) {
 
   const navigateToPipeline = () => {
     dispatch(setActivePipeline(id));
-    if (activePipeline && isTemplate(activePipeline.pipeline)) {
-      navigate('/pipelineTemplate');
+    if (activePipeline && !isTemplate(activePipeline.pipeline)) {
+      navigate('/pipelineInstantiation');
     } else {
-      navigate("/pipelineInstantiation");
+      navigate("pipelineTemplate");
     }
   
   }

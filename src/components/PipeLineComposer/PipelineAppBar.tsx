@@ -60,20 +60,97 @@ export default function PipelineAppBar() {
     dispatch(updatePipelineName(name));
   };
 
+  const [validationError, setValidationError] = useState<string>('');
+
+const validateTemplateData = (flowData: any) => {
+  // Check if flowData exists and has nodes
+  if (!flowData?.nodes || flowData.nodes.length === 0) {
+    return "No nodes found in the pipeline";
+  }
+
+  // Validate each node's template data
+  for (const node of flowData.nodes) {
+    if (node.type === 'operator') {
+      const operatorNode = node as Node<OperatorNodeData>;
+      
+      // Check source handles
+      if (!operatorNode.data.templateData?.sourceHandles?.length) {
+        return `Operator node "${operatorNode.data?.label || 'Unnamed'}" missing source handle configuration`;
+      }
+      
+      // Check if all source handles have types
+      const invalidSourceHandle = operatorNode.data.templateData.sourceHandles.find(handle => !handle.type);
+      if (invalidSourceHandle) {
+        return `Operator node "${operatorNode.data?.label || 'Unnamed'}" has source handle without type configuration`;
+      }
+      
+      // Check target handles
+      if (!operatorNode.data.templateData?.targetHandles?.length) {
+        return `Operator node "${operatorNode.data?.label || 'Unnamed'}" missing target handle configuration`;
+      }
+      
+      // Check if all target handles have types
+      const invalidTargetHandle = operatorNode.data.templateData.targetHandles.find(handle => !handle.type);
+      if (invalidTargetHandle) {
+        return `Operator node "${operatorNode.data?.label || 'Unnamed'}" has target handle without type configuration`;
+      }
+    }
+    
+    if (node.type === 'dataSource') {
+      const dataSourceNode = node as Node<DataSourceNodeData>;
+      
+      // Check source handles
+      if (!dataSourceNode.data.templateData?.sourceHandles?.length) {
+        return `Data source node "${dataSourceNode.data?.label || 'Unnamed'}" missing source handle configuration`;
+      }
+      
+      // Check if all source handles have types
+      const invalidSourceHandle = dataSourceNode.data.templateData.sourceHandles.find(handle => !handle.type);
+      if (invalidSourceHandle) {
+        return `Data source node "${dataSourceNode.data?.label || 'Unnamed'}" has source handle without type configuration`;
+      }
+    }
+  }
+  
+  return null; // Return null if validation passes
+};
+
   const flowData = useSelector(getActiveFlowData);
 
  
   
   const createNewPipeline = () => {
     const templateFlowData = flowData;
+
+    if (templateFlowData?.edges != null && templateFlowData.nodes != null) {
+      // Validate template data
+      const validationError = validateTemplateData(templateFlowData);
+      
+      if (validationError) {
+        // Show error message
+        setStatusMessage(validationError);
+        setStatusType('error');
+        setShowStatusBar(true);
+        
+        // Hide error message after 5 seconds
+        setTimeout(() => {
+          setShowStatusBar(false);
+          setStatusMessage('');
+        }, 5000);
+        
+        return; // Exit the function if validation fails
+      }
     
-    if(templateFlowData?.edges!=null&&templateFlowData.nodes!=null){
-      
+    //if(templateFlowData?.edges!=null&&templateFlowData.nodes!=null){
+    //  
+    //  dispatch(addNewPipeline({ id: `pipeline-${uuidv4()}`, flowData: templateFlowData }));
+    //  { navigate("/pipelineInstantiation") }
+    //  
+    //}
       dispatch(addNewPipeline({ id: `pipeline-${uuidv4()}`, flowData: templateFlowData }));
-      { navigate("/pipelineInstantiation") }
-      
+      navigate("/pipelineInstantiation");
+      dispatch(showTemplateData(false));
     }
-    dispatch(showTemplateData(false));
     
   }
 
