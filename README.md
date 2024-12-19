@@ -1,4 +1,14 @@
-# DAPM Pipeline Editor
+# DAPM-Frontend
+
+A part of the project for the course 02162 Software Engineering 2 created by group G, which consists of:
+* Jia Wei [s233486] ([@Jia1019](https://github.com/Jia1019))
+* Martin Handest [s224755] ([@tacecapSx](https://github.com/tacecapSx))
+* Martin Fyhring Hruby Jensen [s224753] ([@Perry02](https://github.com/Perry02))
+* Oskar William Ulrich Holland [s224768] ([@pandekagee](https://github.com/pandekagee))
+* Souar Ramzi Mohammad Ali [s191446] ([@Souar-Afrin](https://github.com/Souar-Afrin))
+* Suhail Abdi Nuur [s205135] ([@SuhailDTU](https://github.com/SuhailDTU))
+* Yuming Zhang [s232252] ([@xmuzym2017](https://github.com/xmuzym2017))
+* Yue Zhou [s232893] ([@To1and](https://github.com/To1and))
 
 This project is a web application designed for creating and managing pipeline flows. It utilizes React for the frontend, Redux for state management, and React Flow for visualizing pipeline flows.
 
@@ -17,7 +27,7 @@ Before you begin, ensure you have the following installed:
 1. Clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/your-username/pipeline-grid-project.git
+git clone https://github.com/SE2-G/DAPM-Frontend.git
 ```
 
 2. Install the necessary packages:
