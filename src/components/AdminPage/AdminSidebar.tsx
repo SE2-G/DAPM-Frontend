@@ -97,7 +97,7 @@ return (
                 }
             />
         </ListItemButton>
-        </ListItem>
+            </ListItem>
         <ListItem disablePadding>
         <ListItemButton>
             <ListItemText 
@@ -111,6 +111,19 @@ return (
             />
         </ListItemButton>
         </ListItem>
+            <ListItem disablePadding>
+                <ListItemButton>
+                    <ListItemText
+                        primary="ActivityLog"
+                        onClick={
+                            async () => {
+                                adminInfo.userRegisterActive = false
+                                navigate('/AdminActivityLogPage')
+                            }
+                        }
+                    />
+                </ListItemButton>
+            </ListItem>
     </List>
     </Drawer>
 );
