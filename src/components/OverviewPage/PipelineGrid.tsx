@@ -1,3 +1,7 @@
+// Author: s233486
+// Author: s232893
+// Author: s232252
+
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';

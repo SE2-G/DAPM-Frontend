@@ -1,3 +1,5 @@
+// Author: s233486
+
 import { AppBar, Box, ThemeProvider, createTheme } from "@mui/material";
 import Flow from "../components/PipeLineComposer/Flow";
 import Sidebar from "../components/PipeLineComposer/NodesSidebar";

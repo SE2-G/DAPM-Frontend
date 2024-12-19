@@ -1,3 +1,6 @@
+// Author: s233486
+// Author: s224768
+
 import { addEdge as addFlowEdge, applyEdgeChanges, applyNodeChanges, Connection, Edge, EdgeChange, MarkerType, Node, NodeChange } from "reactflow";
 
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'

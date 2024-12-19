@@ -1,3 +1,6 @@
+// Author: s233486
+// Author: s232893
+
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import { Edge } from "reactflow";

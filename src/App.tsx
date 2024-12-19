@@ -1,3 +1,9 @@
+// Author: s233486
+// Author: s232893
+// Author: s224768
+// Author: s232252
+// Author: s191446
+
 import { ThemeProvider, createTheme } from "@mui/material";
 
 import "./index.css";
