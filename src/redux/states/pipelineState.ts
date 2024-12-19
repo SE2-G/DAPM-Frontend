@@ -1,3 +1,6 @@
+// Author: s233486
+// Author: s232893
+
 import { Edge, Node } from 'reactflow';
 import { Organization, Repository, Resource } from './apiState';
 
