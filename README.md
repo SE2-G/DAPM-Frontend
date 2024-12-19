@@ -5,7 +5,7 @@ A part of the project for the course 02162 Software Engineering 2 created by gro
 * Martin Handest [s224755] ([@tacecapSx](https://github.com/tacecapSx))
 * Martin Fyhring Hruby Jensen [s224753] ([@Perry02](https://github.com/Perry02))
 * Oskar William Ulrich Holland [s224768] ([@pandekagee](https://github.com/pandekagee))
-* Souar Ramzi Mohammad Ali [s191446] ([@Souar-Afrin](https://github.com/Souar-Afrin))
+* Souar Ramzi Mohammad Ali [s191446] ([@Souar-Afrin](https://github.com/Souar-Afrin)[@Souar95](https://github.com/Souar95))
 * Suhail Abdi Nuur [s205135] ([@SuhailDTU](https://github.com/SuhailDTU))
 * Yuming Zhang [s232252] ([@xmuzym2017](https://github.com/xmuzym2017))
 * Yue Zhou [s232893] ([@To1and](https://github.com/To1and))
