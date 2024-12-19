@@ -21,7 +21,23 @@ function getAuthHeaders(): Record<string, string> {
     };
 }
 
+export async function fetchMessageLoop(ticketId: string) {
+    try {
+        const maxRetries = 10;
+        const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
+        for (let retries = 0; retries < maxRetries; retries++) {
+            const data = await fetchStatus(ticketId);
+            if (data.status) {
+                return data.result.message;
+            }
+            await delay(1000); 
+        }
+
+    } catch (error) {
+        return error
+    }
+}
 
 export async function fetchActivityLogs(): Promise<any[]> {
     try {
