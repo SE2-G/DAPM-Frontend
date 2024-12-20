@@ -1,5 +1,6 @@
 // Author: s233486
 // Author: s232893
+// Author: s232252
 
 import * as React from 'react';
 import List from '@mui/material/List';
@@ -62,7 +63,7 @@ export default function AlgorithmConfiguration({ nodeprop }: AlgorithmConfugurat
       }))
   }
 
-  const setSourceType = (dataType: string, handle: string) => {
+  const setSourceType = (dataType: string = "eventlog", handle: string) => {
     dispatch(updateSourceHandle({
       nodeId: node?.id,
       handleId: handle,
@@ -70,7 +71,7 @@ export default function AlgorithmConfiguration({ nodeprop }: AlgorithmConfugurat
     }))
   }
 
-  const setTargetType = (dataType: string, handle: string) => {
+  const setTargetType = (dataType: string = "eventlog", handle: string) => {
     dispatch(updateTargetHandle({
       nodeId: node?.id,
       handleId: handle,
@@ -83,7 +84,7 @@ export default function AlgorithmConfiguration({ nodeprop }: AlgorithmConfugurat
       <>
       {showTemplateData ?(<>
         <header>Template Data</header>
-        <TextField inputProps={{ maxLength: 30 }} value={node?.data.templateData.hint} id="outlined-basic" label="Hint" variant="outlined" onChange={(event) => setHint(event?.target.value as string)} />
+        <TextField inputProps={{ maxLength: 30 }} value={node?.data.templateData.hint} id="outlined-basic" label="Hint" variant="outlined" helperText="Enter a brief hint for the template" onChange={(event) => setHint(event?.target.value as string)} />
         {node?.data.templateData.sourceHandles.map((handle) => {
           return (
             <ListItem>

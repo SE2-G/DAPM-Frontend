@@ -1,5 +1,6 @@
 // Author: s233486
 // Author: s232893
+// Author: s232252
 
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -58,8 +59,12 @@ export default function DataSinkConfiguration({ nodeprop }: AlgorithmConfugurati
               sx={{ width: '100%' }}
               onChange={(event) => setLogData(event?.target.value as string)}
             >
+              <MenuItem value="" disabled>Select a repository</MenuItem>
               {repositories.map((repository) => <MenuItem value={repository.id}>{repository.name}</MenuItem>)}
             </Select>
+            {!node?.data.instantiationData?.repository && (
+              <p style={{ color: 'red', marginTop: '10px' }}>No repository selected. Please choose one.</p>
+            )}
           </Box>
         </ListItem>
     

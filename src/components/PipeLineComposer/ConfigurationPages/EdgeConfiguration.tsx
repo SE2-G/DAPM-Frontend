@@ -1,5 +1,6 @@
 // Author: s233486
 // Author: s232893
+// Author: s232252
 
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -32,7 +33,7 @@ export default function EdgeConfiguration({ edgeProp }: AlgorithmConfugurationPr
             <>
                 <ListItem>
                     <Box sx={{ width: '100%', display: "flex", flexDirection: "column" }}>
-                        <TextField value={edge?.data?.filename} id="outlined-basic" label="Filename" variant="outlined" onChange={(event) => setFilename(event?.target.value as string)} />
+                        <TextField value={edge?.data?.filename} id="outlined-basic" label="Filename" variant="outlined" helperText="Enter a unique filename for this edge" onChange={(event) => setFilename(event?.target.value as string)} />
                     </Box>
                 </ListItem>
             </>

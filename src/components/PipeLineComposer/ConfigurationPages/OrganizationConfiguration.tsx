@@ -1,5 +1,6 @@
 // Author: s233486
 // Author: s232893
+// Author: s232252
 
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -47,6 +48,7 @@ export default function DataSinkConfiguration({ nodeprop }: AlgorithmConfugurati
               sx={{ width: '100%' }}
               onChange={(event) => setOrgData(event?.target.value)}
             >
+               <MenuItem value="" disabled>Select an organization</MenuItem>
               {organizations.map((org) => <MenuItem value={org.id}>{org.name}</MenuItem>)}
             </Select>
           </Box>

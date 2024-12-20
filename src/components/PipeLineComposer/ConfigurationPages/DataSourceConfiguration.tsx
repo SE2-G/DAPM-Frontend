@@ -1,5 +1,6 @@
 // Author: s233486
 // Author: s232893
+// Author: s232252
 
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -71,6 +72,7 @@ export default function DataSourceConfiguration({ nodeprop }: AlgorithmConfugura
               sx={{ width: '100%' }}
               onChange={(event) => setType(event?.target.value as string, handle.id)}
             >
+            <MenuItem value="" disabled>Select a data source</MenuItem>
             {dataTypes.map((resource) => <MenuItem value={resource}>{resource}</MenuItem>)}
             </Select>
           </Box>
@@ -96,6 +98,9 @@ export default function DataSourceConfiguration({ nodeprop }: AlgorithmConfugura
               >
               {resources.map((resource) => <MenuItem value={resource.id}>{resource.name}</MenuItem>)}
               </Select>
+              {!node?.data.instantiationData?.resource && (
+                <p style={{ color: 'red', marginTop: '10px' }}>No data source selected. Please choose one.</p>
+              )}
             </Box>
           </ListItem>
           </>
