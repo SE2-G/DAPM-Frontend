@@ -220,7 +220,11 @@ export default function AutoGrid() {
   const instances = pipelines.filter(({ pipeline }: { pipeline: { nodes: any[]; edges: any[] } }) => !isTemplate(pipeline));
 
   const renderPipelinePreview = (pipelineList: { id: string; name: string; imgData: string }[]) => {
-    return pipelineList.map(({ id, name, imgData }) => (
+    const filteredPipelines = pipelineList.filter(({ name }) =>
+      name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+    return filteredPipelines.map(({ id, name, imgData }) => (
       <Grid item xs={12} sm={6} md={4} lg={3} xl={3} key={id}>
         <PipelineCard id={id} name={name} imgData={imgData}></PipelineCard>
       </Grid>
@@ -281,11 +285,7 @@ export default function AutoGrid() {
       <Grid container spacing={{ xs: 1, md: 1 }} sx={{ padding: "10px" }}>
         {activeTab === 0 && renderPipelinePreview(templates)}
         {activeTab === 1 && renderPipelinePreview(instances)}
-        {filteredPipelines.map(({ id, name, imgData }) => (
-          <Grid item xs={12} sm={6} md={4} lg={3} xl={3} key={id}>
-            <PipelineCard id={id} name={name} imgData={imgData}></PipelineCard>
-          </Grid>
-        ))}
+       
       </Grid>
     </Box>
   );
